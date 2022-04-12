@@ -1,4 +1,4 @@
-#### NO MORE UPDATES IN BOSCO ...COMING WITH A NEW BOT SOON🙂💖
+#### NO MORE UPDATES IN 𝙿𝙰𝚃𝙷𝚄𝙼𝙼𝙰 ...COMING WITH A NEW BOT SOON🙂💖
 #### HOW TO DEPLOY ?? [` CLICK HERE TO WATCH TUTORIAL ✨`](https://youtu.be/ZJQ50wYh7dc) 
 
 
@@ -9,9 +9,9 @@
 <div align="center">
 <img src="media/boscoimg.jpg" alt="Pepe" width="170" />
 
-# Bosco Bot
+# Pathumma Bot
 <p align="center">
- <a href="https://github.com/pepesir"><img title="Author" src="https://img.shields.io/badge/OWNER-h?color=black&style=for-the-badge&logo=github"></a>  <a href="https://Wa.me/+917736622139?text=Hello%20P3P3%20Bro🌝...fen%20boi%20aan😌💝"><img title="Author" src="https://img.shields.io/badge/Author P3P3 Sir-h?color=black&style=for-the-badge&logo=whatsapp"></a>
+ <a href="https://github.com/Vk-ser"><img title="Author" src="https://img.shields.io/badge/OWNER-h?color=black&style=for-the-badge&logo=github"></a>  <a href="https://Wa.me/+919656840677?text=Hello%20P3P3%20Bro🌝...fen%20boi%20aan😌💝"><img title="Author" src="https://img.shields.io/badge/Author P3P3 Sir-h?color=black&style=for-the-badge&logo=whatsapp"></a>
 <p align="center">
 <a href="https://chat.whatsapp.com/BzhyWkAEU0t8oVl3s8p94m"><img title="Author" src="https://img.shields.io/badge/WHATSAPP GROUP-h?color=black&style=for-the-badge&logo=whatsapp"></a>    <a href="https://youtube.com/channel/UCVJ9029PQ-gJBtFQZZ3AJuA"><img title="Author" src="https://img.shields.io/badge/YT PEPE SIR-h?color=black&style=for-the-badge&logo=youtube"></a>
 </p>
@@ -22,9 +22,9 @@
 >
 
 <p align="center">
-  <a href="https://github.com/pepesir/Bosco#requirements">Requirements</a> •
-  <a href="https://github.com/pepesir/Bosco#simple-method">Installation</a> •
-  <a href="https://github.com/pepesir/Bosco#thanks-to">Thanks to</a>
+  <a href="https://github.com/Vk_ser/pathumma#requirements">Requirements</a> •
+  <a href="https://github.com/Vk-ser/pathumma#simple-method">Installation</a> •
+  <a href="https://github.com/Vk-ser/pathumma#thanks-to">Thanks to</a>
 </p>
 </div>
 
