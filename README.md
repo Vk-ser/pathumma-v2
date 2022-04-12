@@ -67,10 +67,10 @@ pkg install git
 pkg install bash
 ```
 ```
-git clone https://github.com/pepesir/Bosco.git 
+git clone https://github.com/Vk-ser/pathumma.git 
 ```
 ```
-cd Bosco
+cd pathumma
 ```
 ```
 bash install.sh
@@ -91,7 +91,7 @@ npm start
 
 ```
 By using bc ,tobc or any other Commands, Your WhatsApp account may be banned.
-Pepe Sir or we are not responsible for your account, 
+vk Sir or we are not responsible for your account, 
 This bot is intended for the purpose of having fun with some fun commands 
 and group management with some helpfull commands.
 
