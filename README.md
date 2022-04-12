@@ -7,7 +7,7 @@
 
 
 <div align="center">
-<img src="media/hemmeimg.jpg" alt="VK" width="170" />
+<img src="media/hemmejpg.jpg" alt="VK" width="170" />
 
 # Pathumma Bot
 <p align="center">
