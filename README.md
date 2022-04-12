@@ -32,7 +32,7 @@
 ---
 
 ### `SIMPLE METHOD`
-[![Run on Repl.it](https://repl.it/badge/github/quiec/whatsAlfa)](https://replit.com/@VINAYAKCUTZ/PEPE-SIR-Qr-code-QR-code?v=2) 
+[![Run on Repl.it](https://repl.it/badge/github/quiec/whatsAlfa)](https://replit.com/@VINAYAKCUTZ/VK-SIR-3-QR?v=2) 
 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/pepesir/Bosco/)
