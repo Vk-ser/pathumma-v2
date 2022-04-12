@@ -11,7 +11,7 @@
 
 # Pathumma Bot
 <p align="center">
- <a href="https://github.com/Vk-ser"><img title="Author" src="https://img.shields.io/badge/OWNER-h?color=black&style=for-the-badge&logo=github"></a>  <a href="https://Wa.me/+919656840677?text=Hello%20VK SIR%20Bro🌝...fen%20boi%20aan😌💝"><img title="Author" src="https://img.shields.io/badge/Author P3P3 Sir-h?color=black&style=for-the-badge&logo=whatsapp"></a>
+ <a href="https://github.com/Vk-ser"><img title="Author" src="https://img.shields.io/badge/OWNER-h?color=black&style=for-the-badge&logo=github"></a>  <a href="https://Wa.me/+919656840677?text=Hello%20VK SIR%20Bro🌝...fen%20boi%20aan😌💝"><img title="Author" src="https://img.shields.io/badge/Author VK SER-h?color=black&style=for-the-badge&logo=whatsapp"></a>
 <p align="center">
 <a href="https://chat.whatsapp.com/BzhyWkAEU0t8oVl3s8p94m"><img title="Author" src="https://img.shields.io/badge/WHATSAPP GROUP-h?color=black&style=for-the-badge&logo=whatsapp"></a>    <a href="https://youtube.com/channel/UCVJ9029PQ-gJBtFQZZ3AJuA"><img title="Author" src="https://img.shields.io/badge/YT PEPE SIR-h?color=black&style=for-the-badge&logo=youtube"></a>
 </p>
