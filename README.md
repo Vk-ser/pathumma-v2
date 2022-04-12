@@ -7,7 +7,7 @@
 
 
 <div align="center">
-<img src="media/boscoimg.jpg" alt="VK" width="170" />
+<img src="https://www.linkpicture.com/view.php?img=LPic62559df15a11681500452" alt="VK" width="170" />
 
 # Pathumma Bot
 <p align="center">
