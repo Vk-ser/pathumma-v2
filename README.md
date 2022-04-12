@@ -35,7 +35,7 @@
 [![Run on Repl.it](https://repl.it/badge/github/quiec/whatsAlfa)](https://replit.com/@VINAYAKCUTZ/VK-SIR-3?v=2) 
 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Vk-sir/pathumma/)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Vk-ser/pathumma/)
 
 ### `ADD BUILDPACK`
 
