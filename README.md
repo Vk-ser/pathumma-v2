@@ -17,7 +17,7 @@
 </p>
 
 
-> Bosco Bot is a multipurpose WhatsApp bot using Adiwajshing-Baileys library!
+> Pathumma Bot is a multipurpose WhatsApp bot using Adiwajshing-Baileys library!
 >
 >
 
