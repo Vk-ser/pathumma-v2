@@ -39,7 +39,7 @@ module.exports = welcome = async (pathumma, anu) => {
              const thu = await pathumma.getStatus(anu.participants[0], MessageType.text)
              const num = anu.participants[0]
              const pathumma1 = await pathumma.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
-			 const bosco2 = pathumma1.message["ephemeralMessage"] ? pathumma1.message.ephemeralMessage : pathumma1
+			 const pathumma2 = pathumma1.message["ephemeralMessage"] ? pathumma1.message.ephemeralMessage : pathumma1
                 let v = pathumma.contacts[num] || { notify: num.replace(/@.+/, '') }
                 anu_user = v.vname || v.notify || num.split('@')[0]
                 time_welc = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
@@ -52,7 +52,7 @@ module.exports = welcome = async (pathumma, anu) => {
             if (anu.action == 'remove' && !mem.includes(bosco.user.jid)) {
                 const mdata = await pathumma.groupMetadata(anu.jid)
                 const num = anu.participants[0]
-                const bosco3 = await pathumma.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
+                const pathumma3 = await pathumma.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
 			    const pathumma4 = pathumma3.message["ephemeralMessage"] ? pathumma3.message.ephemeralMessage : pathumma3
                 let w = pathumma.contacts[num] || { notify: num.replace(/@.+/, '') }
                 anu_user = w.vname || w.notify || num.split('@')[0]
