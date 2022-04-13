@@ -32,7 +32,7 @@
 ---
 
 ### `SIMPLE METHOD`
-[![Run on Repl.it](https://repl.it/badge/github/quiec/whatsAlfa)](https://replit.com/@VINAYAKCUTZ/VK-SIR-5?v=2) 
+[![Run on Repl.it](https://repl.it/badge/github/quiec/whatsAlfa)](https://replit.com/@VINAYAKCUTZ/VK-SIR-QR CODE-9?v=2) 
 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Vk-ser/pathumma-v2/)
