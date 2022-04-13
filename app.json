@@ -2,7 +2,7 @@
   "name": "Pathumma",
   "description": "Pathumma is a whatsapp bot made by @VK sir with baileys",
   "repository": "https://github.com/Vk-sir/pathumma",
-  "logo": "https://www.linkpicture.com/view.php?img=LPic62559df15a11681500452",
+  "logo": "https://raw.githubusercontent.com/Vk-ser/pathumma/master/boscoimg.jpg",
   "keywords": ["pathumma", "nodejs", "bot", "whatsapp bot", "whatsapp automation"],
   "buildpacks": [
     {
