@@ -22,7 +22,7 @@
 >
 
 <p align="center">
-  <a href="https://github.com/Vk_ser/pathumma-v2#requirements">Requirements</a> •
+  <a href="https://github.com/Vk-ser/pathumma-v2#requirements">Requirements</a> •
   <a href="https://github.com/Vk-ser/pathumma-v2#simple-method">Installation</a> •
   <a href="https://github.com/Vk-ser/pathumma-v2#thanks-to">Thanks to</a>
 </p>
