@@ -13,13 +13,13 @@ const { color, bgcolor } = require('../lib/color')
 let setting = JSON.parse(fs.readFileSync('./setting.json'))
 prefix = setting.prefix
 
-module.exports = welcome = async (bosco, anu) => {
+module.exports = welcome = async (pathumma, anu) => {
 		try {
-           const mdata = await bosco.groupMetadata(anu.jid)
+           const mdata = await pathumma.groupMetadata(anu.jid)
 			    mem = anu.participants[0]
 			    console.log(anu)
                 try {
-                pp_user = await bosco.getProfilePicture(mem)
+                pp_user = await pathumma.getProfilePicture(mem)
                 } catch (e) {
                 pp_user = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
             }
@@ -29,18 +29,18 @@ module.exports = welcome = async (bosco, anu) => {
                 pp_grup = 'https://i.postimg.cc/SN54m6LW/SAVE-20210728-133334.jpg'
             }
             hehe = await getBuffer(pp_user)
-            if (anu.action == 'add' && mem.includes(bosco.user.jid)) {
+            if (anu.action == 'add' && mem.includes(pathumma.user.jid)) {
             bosco.sendMessage(anu.jid, `hello bro I am A Bot 😎🌹 To use ${prefix}menu`, 'conversation')
             }
-             if (anu.action == 'add' && !mem.includes(bosco.user.jid)) {
+             if (anu.action == 'add' && !mem.includes(pathumma.user.jid)) {
              const mdata = await bosco.groupMetadata(anu.jid)
              
              const memeg = mdata.participants.length
              const thu = await bosco.getStatus(anu.participants[0], MessageType.text)
              const num = anu.participants[0]
-             const bosco1 = await bosco.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
-			 const bosco2 = bosco1.message["ephemeralMessage"] ? bosco1.message.ephemeralMessage : bosco1
-                let v = bosco.contacts[num] || { notify: num.replace(/@.+/, '') }
+             const pathumma1 = await bosco.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
+			 const bosco2 = pathumma1.message["ephemeralMessage"] ? pathumma1.message.ephemeralMessage : pathumma1
+                let v = pathumma.contacts[num] || { notify: num.replace(/@.+/, '') }
                 anu_user = v.vname || v.notify || num.split('@')[0]
                 time_welc = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
                 time_wel = moment.tz('Asia/Kolkata').format("hh:mm")
@@ -54,14 +54,14 @@ module.exports = welcome = async (bosco, anu) => {
                 const num = anu.participants[0]
                 const bosco3 = await bosco.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
 			    const bosco4 = bosco3.message["ephemeralMessage"] ? bosco3.message.ephemeralMessage : bosco3
-                let w = bosco.contacts[num] || { notify: num.replace(/@.+/, '') }
+                let w = pathumma.contacts[num] || { notify: num.replace(/@.+/, '') }
                 anu_user = w.vname || w.notify || num.split('@')[0]
                 time_welc = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
                 time_wel = moment.tz('Asia/Kolkata').format("hh:mm")
                 memeg = mdata.participants.length
                 out = `*Gᴏᴏᴅ Bʏᴇ Bʀᴏᴛʜᴇʀ* 👋\n@${num.split('@')[0]}\n *Rᴇsᴛ Nᴏᴡ Pᴇᴀᴄᴇ* ▢\n${time_wel} -  ${time_welc}`
                 goodbyeBut = [{buttonId:`${prefix}h`,buttonText:{displayText:'GET OUT 🚪'},type:1}, {buttonId:`${prefix}sc`,buttonText:{displayText:'SC'}, type:1}]
-                goodbyeButt = { contentText: ` `, footerText: `${out}`, buttons: goodbyeBut, headerType: 6, locationMessage: bosco3.message.locationMessage}
+                goodbyeButt = { contentText: ` `, footerText: `${out}`, buttons: goodbyeBut, headerType: 6, locationMessage: pathumma3.message.locationMessage}
                 bosco.sendMessage(mdata.id, goodbyeButt, MessageType.buttonsMessage, { caption: 'hehe', "contextInfo": { "mentionedJid" : [num], },})
             }
 		} catch (e) {
