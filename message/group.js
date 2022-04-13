@@ -26,7 +26,7 @@ module.exports = welcome = async (pathumma, anu) => {
                 try {
                 pp_grup = await pathumma.getProfilePicture(anu.jid)
                 } catch (e) {
-                pp_grup = 'https://raw.githubusercontent.com/Vk-ser/pathumma-v2/master/media/boscoimg.jpg'
+                pp_grup = 'https://i.postimg.cc/SN54m6LW/SAVE-20210728-133334.jpg'
             }
             hehe = await getBuffer(pp_user)
             if (anu.action == 'add' && mem.includes(pathumma.user.jid)) {
@@ -47,7 +47,7 @@ module.exports = welcome = async (pathumma, anu) => {
                 teks = `▢ *Hɪ* @${num.split('@')[0]}\n▢ *Bɪᴏ* : *${thu.status}*\n▢ *Mᴇᴍʙᴇʀs : ${memeg}*\n▢ *Wᴇʟᴄᴏᴍᴇ Tᴏ* \n *${mdata.subject}*\n▢ *Dᴏɴᴛ Fᴏʀɢᴇᴛ Dɪsᴄʀɪᴘᴛɪᴏɴ*\n ${time_wel} -  ${time_welc}`
                 welcomeBut = [{buttonId:`${prefix}getdeskgc`,buttonText:{displayText:'DISCRIPTION'},type:1}]
                 welcomeButt = { contentText: ` `, footerText: `${teks}`, buttons: welcomeBut, headerType: 6, locationMessage: pathumma2.message.locationMessage}
-                bosco.sendMessage(mdata.id, welcomeButt, MessageType.buttonsMessage, { caption: 'hehe', "contextInfo": { "mentionedJid" : [num], },})
+                pathumma.sendMessage(mdata.id, welcomeButt, MessageType.buttonsMessage, { caption: 'hehe', "contextInfo": { "mentionedJid" : [num], },})
                  }
             if (anu.action == 'remove' && !mem.includes(pathumma.user.jid)) {
                 const mdata = await pathumma.groupMetadata(anu.jid)
@@ -62,7 +62,7 @@ module.exports = welcome = async (pathumma, anu) => {
                 out = `*Gᴏᴏᴅ Bʏᴇ Bʀᴏᴛʜᴇʀ* 👋\n@${num.split('@')[0]}\n *Rᴇsᴛ Nᴏᴡ Pᴇᴀᴄᴇ* ▢\n${time_wel} -  ${time_welc}`
                 goodbyeBut = [{buttonId:`${prefix}h`,buttonText:{displayText:'GET OUT 🚪'},type:1}, {buttonId:`${prefix}sc`,buttonText:{displayText:'SC'}, type:1}]
                 goodbyeButt = { contentText: ` `, footerText: `${out}`, buttons: goodbyeBut, headerType: 6, locationMessage: pathumma3.message.locationMessage}
-                bosco.sendMessage(mdata.id, goodbyeButt, MessageType.buttonsMessage, { caption: 'hehe', "contextInfo": { "mentionedJid" : [num], },})
+                pathumma.sendMessage(mdata.id, goodbyeButt, MessageType.buttonsMessage, { caption: 'hehe', "contextInfo": { "mentionedJid" : [num], },})
             }
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
