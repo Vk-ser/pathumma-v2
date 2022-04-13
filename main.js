@@ -1,6 +1,6 @@
 /* 
 Don't change credits🥲🚶
-Sourcecode https://github.com/Vk-ser/pathumma-v2
+Sourcecode https://github.com/VKsir/pathumma-v2
 Want to recode? yes, it's up to you as long as you don't change the watermark
 Don't sell the SC 😐👌
 */
@@ -49,7 +49,7 @@ nocache('../message/help.js', module => console.log(color('[WATCH]', 'cyan'), co
          
     const starts = async (pathumma = new WAConnection()) => {
 	pathumma.logger.level = 'warn'
-	console.log(color(figlet.textSync('pathumma BY vk sir', {
+	console.log(color(figlet.textSync('pathumma BY VK', {
 		font: 'Standard',
 		horizontalLayout: 'default',
 		vertivalLayout: 'default',
@@ -58,7 +58,7 @@ nocache('../message/help.js', module => console.log(color('[WATCH]', 'cyan'), co
 	}), 'yellow'))
 	console.log(color('[DENIS]', 'cyan'), color('WELCOME', 'white'))
 	console.log(color('[SER]', 'cyan'), color('BOT RUNNING', 'yellow'))
-	pathumma.browserDescription = ["SUBSCRIBE YT - [vk sir - SIR]", "firefox", "3.0.0"];
+	pathumma.browserDescription = ["SUBSCRIBE YT - [VK - SIR]", "firefox", "3.0.0"];
 
 	// Menunggu QR
 	pathumma.on('qr', () => {
