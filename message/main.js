@@ -1,6 +1,6 @@
 /* 
 Don't change credits🥲🚶
-Sourcecode https://github.com/VKsir/pathumma-v2
+Sourcecode https://github.com/Vk-sir/pathumma-v2
 Want to recode? yes, it's up to you as long as you don't change the watermark
 Don't sell the SC 😐👌
 */
