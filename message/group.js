@@ -30,7 +30,7 @@ module.exports = welcome = async (pathumma, anu) => {
             }
             hehe = await getBuffer(pp_user)
             if (anu.action == 'add' && mem.includes(pathumma.user.jid)) {
-            bosco.sendMessage(anu.jid, `hello bro I am A Bot 😎🌹 To use ${prefix}menu`, 'conversation')
+            pathumma.sendMessage(anu.jid, `hello bro I am A Bot 😎🌹 To use ${prefix}menu`, 'conversation')
             }
              if (anu.action == 'add' && !mem.includes(pathumma.user.jid)) {
              const mdata = await pathumma.groupMetadata(anu.jid)
