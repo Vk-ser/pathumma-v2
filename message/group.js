@@ -46,10 +46,10 @@ module.exports = welcome = async (pathumma, anu) => {
                 time_wel = moment.tz('Asia/Kolkata').format("hh:mm")
                 teks = `▢ *Hɪ* @${num.split('@')[0]}\n▢ *Bɪᴏ* : *${thu.status}*\n▢ *Mᴇᴍʙᴇʀs : ${memeg}*\n▢ *Wᴇʟᴄᴏᴍᴇ Tᴏ* \n *${mdata.subject}*\n▢ *Dᴏɴᴛ Fᴏʀɢᴇᴛ Dɪsᴄʀɪᴘᴛɪᴏɴ*\n ${time_wel} -  ${time_welc}`
                 welcomeBut = [{buttonId:`${prefix}getdeskgc`,buttonText:{displayText:'DISCRIPTION'},type:1}]
-                welcomeButt = { contentText: ` `, footerText: `${teks}`, buttons: welcomeBut, headerType: 6, locationMessage: bosco2.message.locationMessage}
+                welcomeButt = { contentText: ` `, footerText: `${teks}`, buttons: welcomeBut, headerType: 6, locationMessage: pathumma2.message.locationMessage}
                 bosco.sendMessage(mdata.id, welcomeButt, MessageType.buttonsMessage, { caption: 'hehe', "contextInfo": { "mentionedJid" : [num], },})
                  }
-            if (anu.action == 'remove' && !mem.includes(bosco.user.jid)) {
+            if (anu.action == 'remove' && !mem.includes(pathumma.user.jid)) {
                 const mdata = await pathumma.groupMetadata(anu.jid)
                 const num = anu.participants[0]
                 const pathumma3 = await pathumma.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
