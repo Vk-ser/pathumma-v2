@@ -24,21 +24,21 @@ module.exports = welcome = async (pathumma, anu) => {
                 pp_user = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
             }
                 try {
-                pp_grup = await bosco.getProfilePicture(anu.jid)
+                pp_grup = await pathumma.getProfilePicture(anu.jid)
                 } catch (e) {
-                pp_grup = 'https://i.postimg.cc/SN54m6LW/SAVE-20210728-133334.jpg'
+                pp_grup = 'https://raw.githubusercontent.com/Vk-ser/pathumma-v2/master/media/boscoimg.jpg'
             }
             hehe = await getBuffer(pp_user)
             if (anu.action == 'add' && mem.includes(pathumma.user.jid)) {
             bosco.sendMessage(anu.jid, `hello bro I am A Bot 😎🌹 To use ${prefix}menu`, 'conversation')
             }
              if (anu.action == 'add' && !mem.includes(pathumma.user.jid)) {
-             const mdata = await bosco.groupMetadata(anu.jid)
+             const mdata = await pathumma.groupMetadata(anu.jid)
              
              const memeg = mdata.participants.length
-             const thu = await bosco.getStatus(anu.participants[0], MessageType.text)
+             const thu = await pathumma.getStatus(anu.participants[0], MessageType.text)
              const num = anu.participants[0]
-             const pathumma1 = await bosco.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
+             const pathumma1 = await pathumma.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
 			 const bosco2 = pathumma1.message["ephemeralMessage"] ? pathumma1.message.ephemeralMessage : pathumma1
                 let v = pathumma.contacts[num] || { notify: num.replace(/@.+/, '') }
                 anu_user = v.vname || v.notify || num.split('@')[0]
@@ -50,10 +50,10 @@ module.exports = welcome = async (pathumma, anu) => {
                 bosco.sendMessage(mdata.id, welcomeButt, MessageType.buttonsMessage, { caption: 'hehe', "contextInfo": { "mentionedJid" : [num], },})
                  }
             if (anu.action == 'remove' && !mem.includes(bosco.user.jid)) {
-                const mdata = await bosco.groupMetadata(anu.jid)
+                const mdata = await pathumma.groupMetadata(anu.jid)
                 const num = anu.participants[0]
-                const bosco3 = await bosco.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
-			    const bosco4 = bosco3.message["ephemeralMessage"] ? bosco3.message.ephemeralMessage : bosco3
+                const bosco3 = await pathumma.prepareMessage("0@s.whatsapp.net", hehe, MessageType.location,{ thumbnail: hehe})
+			    const pathumma4 = pathumma3.message["ephemeralMessage"] ? pathumma3.message.ephemeralMessage : pathumma3
                 let w = pathumma.contacts[num] || { notify: num.replace(/@.+/, '') }
                 anu_user = w.vname || w.notify || num.split('@')[0]
                 time_welc = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
