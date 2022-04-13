@@ -1,6 +1,6 @@
 /* 
 Don't change credits🥲🚶
-Sourcecode https://github.com/pepesir/Bosco
+Sourcecode https://github.com/VKsir/pathumma
 
 Want to recode? yes, it's up to you as long as you don't change the watermark
 Don't sell the SC 😐👌
@@ -164,15 +164,15 @@ month: 'long',
 year: 'numeric'
 })
 let keynye = m.key
-let c = bosco.chats.get(keynye.remoteJid)
+let c = pathumma.chats.get(keynye.remoteJid)
 let a = c.messages.dict[`${keynye.id}|${keynye.fromMe ? 1: 0}`]
-let contennye = bosco.generateForwardMessageContent(a, false)
+let contennye = pathumma.generateForwardMessageContent(a, false)
 } catch {
 }
 }
 
 
-module.exports = bosco = async (bosco, mek) => {
+module.exports = pathumma = async (pathumma, mek) => {
 	try {
         if (!mek.hasNewMessage) return
         mek = mek.messages.all()[0]
@@ -203,13 +203,13 @@ module.exports = bosco = async (bosco, mek) => {
         const q = args.join(' ')
         const c = args.join(' ')
 
-        const botNumber = bosco.user.jid
+        const botNumber = pathumma.user.jid
         const ownerNumber = setting.ownerNumber
 		const ownerName = setting.ownerName
 		const botName = setting.botName
 		const isGroup = from.endsWith('@g.us')
-		const sender = mek.key.fromMe ? bosco.user.jid : mek.key.remoteJid.endsWith('@g.us') ? mek.participant : mek.key.remoteJid
-		const totalchat = await bosco.chats.all()
+		const sender = mek.key.fromMe ? pathumma.user.jid : mek.key.remoteJid.endsWith('@g.us') ? mek.participant : mek.key.remoteJid
+		const totalchat = await pathumma.chats.all()
 		isStc = Object.keys(mek.message)[0] == "stickerMessage" ? mek.message.stickerMessage.fileSha256.toString('hex') : ""
 	    isStc = `${isStc}`
         const isStcQ = isStc !== "" && content.includes("extendedTextMessage") ||
@@ -226,7 +226,7 @@ module.exports = bosco = async (bosco, mek) => {
         const isStcTag = isStcMedia && content.includes("mentionedJid")
         const isStcReply = isStcMedia && content.includes("Message")
         const isStcProd = isStcMedia && content.includes("productMessage")
-		const groupMetadata = isGroup ? await bosco.groupMetadata(from) : ''
+		const groupMetadata = isGroup ? await pathumma.groupMetadata(from) : ''
 		const groupName = isGroup ? groupMetadata.subject : ''
 		const groupId = isGroup ? groupMetadata.jid : ''
 		const groupMembers = isGroup ? groupMetadata.participants : ''
@@ -235,8 +235,8 @@ module.exports = bosco = async (bosco, mek) => {
 		const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 		const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 		const isGroupAdmins = groupAdmins.includes(sender) || false
-        const conts = mek.key.fromMe ? bosco.user.jid : bosco.contacts[sender] || { notify: jid.replace(/@.+/, '') }
-        const pushname = mek.key.fromMe ? bosco.user.name : conts.notify || conts.vname || conts.name || '-'
+        const conts = mek.key.fromMe ? pathumma.user.jid : pathumma.contacts[sender] || { notify: jid.replace(/@.+/, '') }
+        const pushname = mek.key.fromMe ? pathumma.user.name : conts.notify || conts.vname || conts.name || '-'
         const mentionByTag = type == "extendedTextMessage" && mek.message.extendedTextMessage.contextInfo != null ? mek.message.extendedTextMessage.contextInfo.mentionedJid : []
         const mentionByreply = type == "extendedTextMessage" && mek.message.extendedTextMessage.contextInfo != null ? mek.message.extendedTextMessage.contextInfo.participant || "" : ""
         const mention = typeof(mentionByTag) == 'string' ? [mentionByTag] : mentionByTag
@@ -261,19 +261,19 @@ module.exports = bosco = async (bosco, mek) => {
         
         if (antibot === true) return
 		const catl = (teks) => {
-             res = bosco.prepareMessageFromContent(from,{ "orderMessage": { "itemCount": 400, "message": teks, "footerText": "*Pepe Ser*", "thumbnail": dfrply, "surface": 'CATALOG' }}, {quoted:ftrol})
-             bosco.relayWAMessage(res)
+             res = pathumma.prepareMessageFromContent(from,{ "orderMessage": { "itemCount": 400, "message": teks, "footerText": "*VK Ser*", "thumbnail": dfrply, "surface": 'CATALOG' }}, {quoted:ftrol})
+             pathumma.relayWAMessage(res)
         }
        const catlo = (teks) => {
-             res = bosco.prepareMessageFromContent(from,{ "orderMessage": { "itemCount": 70000, "message": teks, "footerText": "Made With Pepe", thumbnail: fs.readFileSync('./ds.jpg'), "surface": 'CATALOG' }}, {quoted:ftroli})
-             bosco.relayWAMessage(res)
+             res = pathumma.prepareMessageFromContent(from,{ "orderMessage": { "itemCount": 70000, "message": teks, "footerText": "Made With VK", thumbnail: fs.readFileSync('./ds.jpg'), "surface": 'CATALOG' }}, {quoted:ftroli})
+             pathumma.relayWAMessage(res)
         }
         const grupinv = (teks) => {
-        	grup = bosco.prepareMessageFromContent(from, { "groupInviteMessage": { "groupJid": '6288213840883-1616169743@g.us', "inviteCode": 'https://chat.whatsapp.com/BzhyWkAEU0t8oVl3s8p94m', "groupName": `Bosco Family`, "footerText": "*Pepe Ser*", "jpegThumbnail": dfrply, "caption": teks}}, {quoted:fvideo})
-            bosco.relayWAMessage(grup)
+        	grup = pathumma.prepareMessageFromContent(from, { "groupInviteMessage": { "groupJid": '6288213840883-1616169743@g.us', "inviteCode": 'https://chat.whatsapp.com/BzhyWkAEU0t8oVl3s8p94m', "groupName": `pathumma Family`, "footerText": "*VK Ser*", "jpegThumbnail": dfrply, "caption": teks}}, {quoted:fvideo})
+            pathumma.relayWAMessage(grup)
         }
         try {
-		pporang = await bosco.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
+		pporang = await pathumma.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
 		      } catch {
 		pporang = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 		      }
@@ -292,23 +292,23 @@ module.exports = bosco = async (bosco, mek) => {
             return Math.floor(Math.random() * angka) + 1
         }
         const reply = (teks) => {
-	      bosco.sendMessage(from, teks, text, { thumbnail: denis, sendEphemeral: true, quoted: mek, contextInfo: { forwardingScore: 508, isForwarded: false, "externalAdReply": { "title": `${' '}Sᴜʙsᴄʀɪʙᴇ Yᴛ : PEPE SIR${''}${''}`, "body": `Gʀᴏᴜᴘ Assɪsᴛᴇɴᴛ Bᴏᴛ`, "previewType": 'PHOTO', "thumbnailUrl": `${''}`, "thumbnail": denis, "sourceUrl": `${''}`}},})
+	      pathumma.sendMessage(from, teks, text, { thumbnail: denis, sendEphemeral: true, quoted: mek, contextInfo: { forwardingScore: 508, isForwarded: false, "externalAdReply": { "title": `${' '}Sᴜʙsᴄʀɪʙᴇ Yᴛ : VK SIR${''}${''}`, "body": `Gʀᴏᴜᴘ Assɪsᴛᴇɴᴛ Bᴏᴛ`, "previewType": 'PHOTO', "thumbnailUrl": `${''}`, "thumbnail": denis, "sourceUrl": `${''}`}},})
         }
         const sendMess = (hehe, teks) => {
-           bosco.sendMessage(hehe, teks, text)
+           pathumma.sendMessage(hehe, teks, text)
         }
         const mentions = (teks, memberr, id) => {
-           (id == null || id == undefined || id == false) ? bosco.sendMessage(from, {text: teks.trim(), jpegThumbnail: fs.readFileSync('./media/wpmobile.jpg')}, extendedText, { sendEphemeral: true, contextInfo: { "mentionedJid": memberr } }) : bosco.sendMessage(from, {text: teks.trim(), jpegThumbnail: fs.readFileSync('./media/wpmobile.jpg')}, extendedText, { sendEphemeral: true, quoted: mek, contextInfo: { "mentionedJid": memberr } })
+           (id == null || id == undefined || id == false) ? pathumma.sendMessage(from, {text: teks.trim(), jpegThumbnail: fs.readFileSync('./media/wpmobile.jpg')}, extendedText, { sendEphemeral: true, contextInfo: { "mentionedJid": memberr } }) : pathumma.sendMessage(from, {text: teks.trim(), jpegThumbnail: fs.readFileSync('./media/wpmobile.jpg')}, extendedText, { sendEphemeral: true, quoted: mek, contextInfo: { "mentionedJid": memberr } })
         }
         const sendText = (from, text) => {
-           bosco.sendMessage(from, text, MessageType.text)
+           pathumma.sendMessage(from, text, MessageType.text)
         }
         const textImg = (teks) => {
-           return bosco.sendMessage(from, teks, text, {quoted: mek, thumbnail: fs.readFileSync('./media/wpmobile.jpg')})
+           return pathumma.sendMessage(from, teks, text, {quoted: mek, thumbnail: fs.readFileSync('./media/wpmobile.jpg')})
         }
         
         const fakestatus = (teks) => {
-            return bosco.sendMessage(from, teks, text, {
+            return pathumma.sendMessage(from, teks, text, {
                 quoted: {
                     key: {
                         fromMe: false,
@@ -335,10 +335,10 @@ module.exports = bosco = async (bosco, mek) => {
             })
         }
         const fakethumb = (teks, yes) => {
-            return bosco.sendMessage(from, teks, image, {thumbnail:fs.readFileSync('./stik/fake.jpg'),quoted:mek,caption:yes})
+            return pathumma.sendMessage(from, teks, image, {thumbnail:fs.readFileSync('./stik/fake.jpg'),quoted:mek,caption:yes})
         }
         const fakegroup = (teks) => {
-            return bosco.sendMessage(from, teks, text, {
+            return pathumma.sendMessage(from, teks, text, {
                 quoted: {
                     key: {
                         fromMe: false,
@@ -365,7 +365,7 @@ module.exports = bosco = async (bosco, mek) => {
             })
         }
       const fgclink = (teks) => {
-            bosco.sendMessage(from, teks, text, {
+            pathumma.sendMessage(from, teks, text, {
                 quoted: {
 	                key: {
 		               fromMe: true,
@@ -400,7 +400,7 @@ const ftex = {
 	                  } 
                      }
        const fakeitem = (teks) => {
-           return bosco.sendMessage(from, teks, text, {
+           return pathumma.sendMessage(from, teks, text, {
                 quoted: {
         key:{
         	fromMe:false,
@@ -452,7 +452,7 @@ remoteJid :"status@broadcast" }: {})
 		///Button Location
 /*const sendButLocation = async (id, text1, desc1, gam1, but = [], options = {}) => {
 kma = gam1
-mhan = await bosco.prepareMessage(from, kma, location)
+mhan = await pathumma.prepareMessage(from, kma, location)
 /*const buttonMessages = {
 locationMessage: mhan.message.locationMessage,
 contentText: text1,
@@ -460,13 +460,13 @@ footerText: desc1,
 buttons: but,
 headerType: 6
 /}
-bosco.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
+pathumma.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
 /}*/
 //Button ocument
 const Sendbutdocument = async(id, text1, desc1, file1, doc1, but = [], options = {}) => {
 media = file1
 kma = doc1
-mhan = await bosco.prepareMessage(from, media, document, kma)
+mhan = await pathumma.prepareMessage(from, media, document, kma)
 const buttonMessages = {
 documentMessage: mhan.message.documentMessage,
 contentText: text1,
@@ -474,7 +474,7 @@ footerText: desc1,
 buttons: but,
 headerType: "DOCUMENT"
 }
-bosco.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
+pathumma.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
 }
 
 // VIDEO
@@ -486,7 +486,7 @@ const fvid = {
                 },
 	 message: { 
                  "videoMessage": { 
-                 "title": `pepe sir`,
+                 "title": `VK sir`,
                  "h": `${tampilUcapan} ${pushname}`,
                  'duration': '99999', 
                  'caption': `${tampilUcapan} ${pushname}`,
@@ -500,7 +500,7 @@ const fvid = {
                   key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "16505434800@s.whatsapp.net" } : {})},message: {"productMessage": {"product": {"productImage":{"mimetype": "image/jpeg","jpegThumbnail": fs.readFileSync(`./ds.jpg`)},"title": `▢ ${fake} ▢`,"description": "hehe", "currencyCode": "US$","priceAmount1000": "9999999999","retailerId": "X - Dev Team","productImageCount": 1},"businessOwnerJid": `0@s.whatsapp.net`}}}
             //FAKE KONTAK
             const fkontak = { 
-                  key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `0@s.whatsapp.net` } : {}) }, message: { 'contactMessage': { 'displayName': `${fake}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Its Me Pepe Ser\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./ds.jpg')}}}
+                  key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `0@s.whatsapp.net` } : {}) }, message: { 'contactMessage': { 'displayName': `${fake}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Its Me VK Ser\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./ds.jpg')}}}
             //FAKE STICKER
             const fsticker = {
                   key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "16505434800@s.whatsapp.net" } : {})},"message": {"stickerMessage": { "url": "https://mmg.whatsapp.net/d/f/Am6FBfNf-E2f1VoGBXkPaNAy7L6Tw_HMavKrHEt48QM4.enc","fileSha256": "Yfj8SW7liSEnDakvyVlXVZQ1LJBC9idn09X7KHe8HTc=","fileEncSha256": "F854aUrzgAkBTOVULpne4oSIi6S04Jo56pjZEo+p+9U=","mediaKey": "Z3nA2asclAAwWHngNO/vJ81qxOE2/0gkEnXak+NxPV4=","mimetype": "image/webp","height": 64,"width": 64,"directPath": "/v/t62.15575-24/12097272_1193895144391295_8973688483514349023_n.enc?ccb=11-4&oh=5a9d7147627a8355569f1a641b9ebee3&oe=60C65E73","fileLength": "7186","mediaKeyTimestamp": "1622815545","isAnimated": true}}}
@@ -550,18 +550,18 @@ const ftrol = {
        }
        const kick = function(from, orangnya){
 	       for (let i of orangnya){
-	       bosco.groupRemove(from, [i])
+	       pathumma.groupRemove(from, [i])
         }
         }
        const kickMember = async(id, target = []) => {
-           let group = await bosco.groupMetadata(id)
+           let group = await pathumma.groupMetadata(id)
            let owner = group.owner.replace("c.us", "s.whatsapp.net")
-           let me = bosco.user.jid
+           let me = pathumma.user.jid
            for (i of target) {
            if (!i.includes(me) && !i.includes(owner)) {
-           await bosco.groupRemove(from, [i])
+           await pathumma.groupRemove(from, [i])
         } else {
-           await bosco.sendMessage(id, "Not Premited!", "conversation")
+           await pathumma.sendMessage(id, "Not Premited!", "conversation")
         }
     }
 }
@@ -569,50 +569,50 @@ const ftrol = {
 			for (let anji of setik){
 				if (budy === anji){
 					result = fs.readFileSync(`./media/sticker/${anji}.webp`)
-					bosco.sendMessage(from, result, sticker, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: from } : {})}, message: { orderMessage: { itemCount: 2021, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `${pushname}`, orderTitle: `${pushname}`, sellerJid: '0@s.whatsapp.net'}}}})
+					pathumma.sendMessage(from, result, sticker, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: from } : {})}, message: { orderMessage: { itemCount: 2021, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `${pushname}`, orderTitle: `${pushname}`, sellerJid: '0@s.whatsapp.net'}}}})
 					}
 			}
 			for (let anju of vien){
 				if (budy === anju){
 					result = fs.readFileSync(`./media/vn/${anju}.mp3`)
-					bosco.sendMessage(from, result, audio, { quoted: mek, mimetype: 'audio/mp4', duration: 1, ptt: true, contextInfo: { forwardingScore: 0, isForwarded: true}})
+					pathumma.sendMessage(from, result, audio, { quoted: mek, mimetype: 'audio/mp4', duration: 1, ptt: true, contextInfo: { forwardingScore: 0, isForwarded: true}})
 					}
 			}
 			for (let anjh of imagi){
 				if (budy === anjh){
 					result = fs.readFileSync(`./media/image/${anjh}.jpg`)
-					bosco.sendMessage(from, result, image, {quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { orderMessage: { itemCount: 500, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `${fake}`, orderTitle: `MADE BY DENIS`, sellerJid: '0@s.whatsapp.net'}}}})
+					pathumma.sendMessage(from, result, image, {quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { orderMessage: { itemCount: 500, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `${fake}`, orderTitle: `MADE BY DENIS`, sellerJid: '0@s.whatsapp.net'}}}})
 					}
 			}
 			for (let anje of videonye){
 				if (budy === anje){
 					result = fs.readFileSync(`./media/video/${anje}.mp4`)
-					bosco.sendMessage(from, result, video, { quoted: mek, contextInfo: { forwardingScore: 508, isForwarded: true}, mimetype: 'video/mp4' })
+					pathumma.sendMessage(from, result, video, { quoted: mek, contextInfo: { forwardingScore: 508, isForwarded: true}, mimetype: 'video/mp4' })
 					}
 			}
        const add = function(from, orangnya){
-	       bosco.groupAdd(from, orangnya)
+	       pathumma.groupAdd(from, orangnya)
 }
       const sendBug = async(target, teks) => {
            if (!teks) teks = '.'
-           await bosco.relayWAMessage(bosco.
-           prepareMessageFromContent(target, bosco.
+           await pathumma.relayWAMessage(pathumma.
+           prepareMessageFromContent(target, pathumma.
            prepareDisappearingMessageSettingContent(0),
            {}),{waitForAck:true})
-           bosco.sendMessage(target, teks, 'conversation')
+           pathumma.sendMessage(target, teks, 'conversation')
 }
        const sendKontak = (from, nomor, nama, org = "") => {
 	       const vcard = 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + nama + '\n' + 'ORG:' + org + '\n' + 'TEL;type=CELL;type=VOICE;waid=' + nomor + ':+' + nomor + '\n' + 'END:VCARD'
-	       bosco.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact, {quoted: mek})
+	       pathumma.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact, {quoted: mek})
 }
       const hideTag = async function(from, text){
-	       let anu = await bosco.groupMetadata(from)
+	       let anu = await pathumma.groupMetadata(from)
 	       let members = anu.participants
 	       let ane = []
 	       for (let i of members){
 	       ane.push(i.jid)
 }
-	       bosco.sendMessage(from, {text:text, jpegThumbnail:fs.readFileSync('media/Nakano.jpg')}, 'extendedTextMessage', {contextInfo: {"mentionedJid": ane}})
+	       pathumma.sendMessage(from, {text:text, jpegThumbnail:fs.readFileSync('media/Nakano.jpg')}, 'extendedTextMessage', {contextInfo: {"mentionedJid": ane}})
 }  
       const sendWebp = async(to, url) => {
            var names = Date.now() / 10000;
@@ -630,7 +630,7 @@ const ftrol = {
            if (err) return reply(`${err}`)
            exec(`webpmux -set exif ./sticker/data.exif ${asw} -o ${asw}`, async (error) => {
            if (error) return reply(`${error}`)
-           bosco.sendMessage(from, fs.readFileSync(asw), sticker, {sendEphemeral:true, quoted:mek})
+           pathumma.sendMessage(from, fs.readFileSync(asw), sticker, {sendEphemeral:true, quoted:mek})
            fs.unlinkSync(asw)
 });
 });
@@ -660,7 +660,7 @@ const ftrol = {
            if(mime.split("/")[0] === "audio"){
            mime = Mimetype.mp4Audio
 }
-           bosco.sendMessage(to, media, type, {quoted: mek, "externalAdReply": { "title": `${' '}Sᴜʙsᴄʀɪʙᴇ Yᴛ : PEPE SIR${''}${''}`, "body": `Gʀᴏᴜᴘ Assɪsᴛᴇɴᴛ Bᴏᴛ`, "previewType": 'PHOTO', "thumbnailUrl": `${''}`, "thumbnail": denis, "sourceUrl": `${''}`}, mimetype: mime, caption: text, thumbnail: Buffer.alloc(0), contextInfo: {"mentionedJid": mids}})
+           pathumma.sendMessage(to, media, type, {quoted: mek, "externalAdReply": { "title": `${' '}Sᴜʙsᴄʀɪʙᴇ Yᴛ : VK SIR${''}${''}`, "body": `Gʀᴏᴜᴘ Assɪsᴛᴇɴᴛ Bᴏᴛ`, "previewType": 'PHOTO', "thumbnailUrl": `${''}`, "thumbnail": denis, "sourceUrl": `${''}`}, mimetype: mime, caption: text, thumbnail: Buffer.alloc(0), contextInfo: {"mentionedJid": mids}})
                      
            fs.unlinkSync(filename)
 });
@@ -678,7 +678,7 @@ const ftrol = {
                     let asw = './stik' + names + '.webp'
                     exec(`ffmpeg -i ${filess} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${asw}`, (err) => {
                         let media = fs.readFileSync(asw)
-                        bosco.sendMessage(to, media, MessageType.sticker,{quoted:mek})
+                        pathumma.sendMessage(to, media, MessageType.sticker,{quoted:mek})
                         fs.unlinkSync(filess)
                         fs.unlinkSync(asw)
                     });
@@ -691,7 +691,7 @@ const ftrol = {
             if (isAfk(mek.key.remoteJid)) return
             addafk(mek.key.remoteJid)
             heheh = ms(Date.now() - waktu) 
-            bosco.sendMessage(mek.key.remoteJid,`@${owner} *Currently Offline!*\n\n*Reason :* *${alasan}*\n*Since :* *${heheh.hours} 'O'clock*, *${heheh.minutes}* *Minute*, *${heheh.seconds}* *Seconds ago*\n\n *Please contact again later...*`, MessageType.text,{contextInfo:{ mentionedJid: [`${owner}@s.whatsapp.net`],'stanzaId': "B826873620DD5947E683E3ABE663F263", 'participant': "0@s.whatsapp.net", 'remoteJid': 'status@broadcast', 'quotedMessage': {"imageMessage": {"caption": "*OFFLINE*", 'jpegThumbnail': fs.readFileSync('./ds.jpg')}}}})
+            pathumma.sendMessage(mek.key.remoteJid,`@${owner} *Currently Offline!*\n\n*Reason :* *${alasan}*\n*Since :* *${heheh.hours} 'O'clock*, *${heheh.minutes}* *Minute*, *${heheh.seconds}* *Seconds ago*\n\n *Please contact again later...*`, MessageType.text,{contextInfo:{ mentionedJid: [`${owner}@s.whatsapp.net`],'stanzaId': "B826873620DD5947E683E3ABE663F263", 'participant': "0@s.whatsapp.net", 'remoteJid': 'status@broadcast', 'quotedMessage': {"imageMessage": {"caption": "*OFFLINE*", 'jpegThumbnail': fs.readFileSync('./ds.jpg')}}}})
             }
             }   
         if (mek.key.remoteJid.endsWith('@g.us') && offline) {
@@ -704,7 +704,7 @@ const ftrol = {
         if (isAfk(mek.key.remoteJid)) return
         addafk(mek.key.remoteJid)
         heheh = ms(Date.now() - waktu)
-        bosco.sendMessage(mek.key.remoteJid,`@${owner} *Currently Offline!*\n\n *Reason :* *${alasan}*\n *Since :* *${heheh.hours}* *'O'clock*, *${heheh.minutes}* *Minute*, *${heheh.seconds}* *Seconds ago*\n\n*Please contact again later*`, MessageType.text,{contextInfo:{ mentionedJid: [`${owner}@s.whatsapp.net`],'stanzaId': "B826873620DD5947E683E3ABE663F263", 'participant': "0@s.whatsapp.net", 'remoteJid': 'status@broadcast', 'quotedMessage': {"imageMessage": {"caption": "*OFFLINE*", 'jpegThumbnail': fs.readFileSync('./ds.jpg')}}}})
+        pathumma.sendMessage(mek.key.remoteJid,`@${owner} *Currently Offline!*\n\n *Reason :* *${alasan}*\n *Since :* *${heheh.hours}* *'O'clock*, *${heheh.minutes}* *Minute*, *${heheh.seconds}* *Seconds ago*\n\n*Please contact again later*`, MessageType.text,{contextInfo:{ mentionedJid: [`${owner}@s.whatsapp.net`],'stanzaId': "B826873620DD5947E683E3ABE663F263", 'participant': "0@s.whatsapp.net", 'remoteJid': 'status@broadcast', 'quotedMessage': {"imageMessage": {"caption": "*OFFLINE*", 'jpegThumbnail': fs.readFileSync('./ds.jpg')}}}})
           }
         }
             }
@@ -714,10 +714,10 @@ const ftrol = {
     }
       const sendFileFromUrl = async(link, type, options) => {
            hasil = await getBuffer(link)
-	       bosco.sendMessage(from, hasil, type, options).catch(e => {
+	       pathumma.sendMessage(from, hasil, type, options).catch(e => {
 	       fetch(link).then((hasil) => {
-	       bosco.sendMessage(from, hasil, type, options).catch(e => {
-	       bosco.sendMessage(from, { url : link }, type, options).catch(e => {
+	       pathumma.sendMessage(from, hasil, type, options).catch(e => {
+	       pathumma.sendMessage(from, { url : link }, type, options).catch(e => {
 	       reply('*Error Failed To Download And Send Media*')
 	       console.log(e)
 })
@@ -725,7 +725,7 @@ const ftrol = {
 })
 })
 }
-          let authorname = bosco.contacts[from] != undefined ? bosco.contacts[from].vname || bosco.contacts[from].notify : undefined	
+          let authorname = pathumma.contacts[from] != undefined ? pathumma.contacts[from].vname || pathumma.contacts[from].notify : undefined	
           if (authorname != undefined) { } else { authorname = groupName }	
           function addMetadata(packname, author) {	
           if (!packname) packname = '!Denis'; if (!author) author = 'Ser';author = author.replace(/[^a-zA-Z0-9]/g, '');	
@@ -870,46 +870,46 @@ const ftrol = {
 				if (!isGroup) return
 				if (!isAntiLink) return
 				if (isGroupAdmins) return reply('Atasan grup mah bebas yakan :v')
-				bosco.updatePresence(from, Presence.composing)
+				pathumma.updatePresence(from, Presence.composing)
 				var kic = `${sender.split("@")[0]}@s.whatsapp.net`
 				reply('Link terdeteksi, Auto kick!')
-			    bosco.groupRemove(from, [kic]).catch((e) => { reply(mess.only.Badmin) })
+			    pathumma.groupRemove(from, [kic]).catch((e) => { reply(mess.only.Badmin) })
 			}
 			}
         if (isGroup && isAntiLink && !isGroupAdmins && isBotGroupAdmins){
             if (budy.match("https:\\chat.whatsapp.com")) {
                 reply(`?? *GROUP LINK DETECTOR* 🚧\n\n_To Any Links Send This Group You Will Kicked_`)
-                bosco.groupRemove(from, [sender])
+                pathumma.groupRemove(from, [sender])
             }
         }
         if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
             if (budy.match(/(https:\\chat.whatsapp.com)/gi)) {
                 reply(`🚧 *GROUP LINK DETECTOR* 🚧\n\n_To Any Links Send This Group You Will Kicked_`)
-                bosco.groupRemove(from, [sender])
+                pathumma.groupRemove(from, [sender])
             }
         }
        if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
             if (budy.match(/(https:\\chat.whatsapp.com)/gi)) {
                 reply(`*🚧GROUP LINK DETECTOR🚧*\n\n_To Any Links Send This Group You Will Kicked_`)
-                bosco.groupRemove(from, [sender])
+                pathumma.groupRemove(from, [sender])
             }
         }
         if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
             if (budy.match(/(https:\\chat.whatsapp.com)/gi)) {
                 reply(`*🚧GROUP LINK DETECTOR🚧*\n\n_To Any Links Send This Group You Will Kicked_`)
-                bosco.groupRemove(from, [sender])
+                pathumma.groupRemove(from, [sender])
             }
         }
          if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
             if (budy.match(/(https:\\chat.whatsapp.com)/gi)) {
                 reply(`*🚧GROUP LINK DETECTOR🚧*\n\n_To Any Links Send This Group You Will Kicked_`)
-                bosco.groupRemove(from, [sender])
+                pathumma.groupRemove(from, [sender])
             }
         }
         if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
             if (budy.match(/(https:\\chat.whatsapp.com)/gi)) {
                 reply(`*🚧GROUP LINK DETECTOR🚧*\n\n_To Any Links Send This Group You Will Kicked_`)
-                bosco.groupRemove(from, [sender])
+                pathumma.groupRemove(from, [sender])
             }
         }
        
@@ -917,29 +917,29 @@ const ftrol = {
 		    if (!isGroup) return reply(mess.only.group)
 			if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Reply targetnya!')
 			picknya = mek.message.extendedTextMessage.contextInfo.participant
-		    bosco.groupMakeAdmin(from, [picknya])
+		    pathumma.groupMakeAdmin(from, [picknya])
 		    return reply(`*Pʀᴏᴍᴏᴛᴇᴅ*`)
 			}
 			if (budy.toLowerCase() === `${prefix}demote`){
 		    if (!isGroup) return reply(mess.only.group)
 			if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Reply targetnya!')
 			dicknya = mek.message.extendedTextMessage.contextInfo.participant
-		    bosco.groupDemoteAdmin(from, [dicknya])
+		    pathumma.groupDemoteAdmin(from, [dicknya])
 		    return reply(`*Dᴇᴍᴏᴛᴇᴅ*`)
 			}
          
         // Button Cmd 
            if (responseButton === 'open') {
-	       bosco.sendMessage(from, `*Gʀᴏᴜᴘ Oᴘᴇɴᴅ Bʏ Aᴅᴍɪɴ*`, MessageType.text, {quoted: ftext})
-		   bosco.groupSettingChange(from, GroupSettingChange.messageSend, false)
+	       pathumma.sendMessage(from, `*Gʀᴏᴜᴘ Oᴘᴇɴᴅ Bʏ Aᴅᴍɪɴ*`, MessageType.text, {quoted: ftext})
+		   pathumma.groupSettingChange(from, GroupSettingChange.messageSend, false)
 		   } else if (responseButton === 'close') {
-	       await bosco.groupSettingChange(from, GroupSettingChange.messageSend, true)
-	       bosco.sendMessage(from, `*Gʀᴏᴜᴘ Cʟᴏsᴇᴅ Bʏ Aᴅᴍɪɴ*`, MessageType.text, {quoted: ftext})
+	       await pathumma.groupSettingChange(from, GroupSettingChange.messageSend, true)
+	       pathumma.sendMessage(from, `*Gʀᴏᴜᴘ Cʟᴏsᴇᴅ Bʏ Aᴅᴍɪɴ*`, MessageType.text, {quoted: ftext})
            }
            if (responseButton === 'on'){
-           await bosco.toggleDisappearingMessages(from, WA_DEFAULT_EPHEMERAL)
+           await pathumma.toggleDisappearingMessages(from, WA_DEFAULT_EPHEMERAL)
            } else if (responseButton === 'off'){
-           await bosco.toggleDisappearingMessages(from, 0)
+           await pathumma.toggleDisappearingMessages(from, 0)
            }
               
          // CMD
@@ -957,25 +957,25 @@ const ftrol = {
             ini_ownerNumber = [`${setting.owner}@s.whatsapp.net`,`917736622139@s.whatsapp.net`,`12502880746@s.whatsapp.net`,`${setting.owner}@s.whatsapp.net`,`${setting.owner}@s.whatsapp.net`]
             let ini_list = []
 		    for (let i of ini_ownerNumber) {
-			const vname_ = bosco.contacts[i] != undefined ? bosco.contacts[i].vname || bosco.contacts[i].notify : undefined
+			const vname_ = pathumma.contacts[i] != undefined ? pathumma.contacts[i].vname || pathumma.contacts[i].notify : undefined
 		     ini_list.push({
-			 "displayName": 'Owner Bosco',
-			 "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:${vname_ ? `${vname_}` : `${bosco.user.name}`}\nORG: Pepe Ser;\nitem1.TEL;waid=${i.split('@')[0]}:${i.split('@')[0]}\nitem1.X-ABLabel:Its me Pepe\nEND:VCARD`
+			 "displayName": 'Owner pathumma',
+			 "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:${vname_ ? `${vname_}` : `${pathumma.user.name}`}\nORG: VK Ser;\nitem1.TEL;waid=${i.split('@')[0]}:${i.split('@')[0]}\nitem1.X-ABLabel:Its me VK\nEND:VCARD`
 			  })
 			  }
-			 hehe = await bosco.sendMessage(from, {
+			 hehe = await pathumma.sendMessage(from, {
 			 "displayName": `${ini_list.length} kontak`,
 			 "contacts": ini_list 
 			 }, 'contactsArrayMessage', {quoted:mek})
 		     break
         case 'menu':
-        case 'bosco':
+        case 'pathumma':
         case 'cmd':
-        groups = bosco.chats.array.filter(v => v.jid.endsWith('g.us'))
-        privat = bosco.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
-        totalChat = await bosco.chats.all()
-        bosco1 = await bosco.prepareMessage(from, denis, location, {thumbnail: denis})
-        bosco2 = bosco1.message["ephemeralMessage"] ? bosco1.message.ephemeralMessage : bosco1
+        groups = pathumma.chats.array.filter(v => v.jid.endsWith('g.us'))
+        privat = pathumma.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
+        totalChat = await pathumma.chats.all()
+        pathumma1 = await pathumma.prepareMessage(from, denis, location, {thumbnail: denis})
+        pathumma2 = pathumma1.message["ephemeralMessage"] ? pathumma1.message.ephemeralMessage : pathumma1
         timestampe = speed();
         latensie = speed() - timestampe
  hehe = `
@@ -989,17 +989,17 @@ const ftrol = {
  `
  menubutton = [{buttonId:`${prefix}help`,buttonText:{displayText:'MENU'},type:1},
  {buttonId:`${prefix}sc`,buttonText:{displayText:'SCRIPT'},type:1},
- {buttonId:`${prefix}boscogroup`,buttonText:{displayText:'BOT GROUP'},type:1}
+ {buttonId:`${prefix}pathummagroup`,buttonText:{displayText:'BOT GROUP'},type:1}
 ]
- menumessage = { contentText: ` `, footerText: `${hehe}`, buttons: menubutton, headerType: 6, locationMessage: bosco2.message.locationMessage}
- bosco.sendMessage(from, menumessage, MessageType.buttonsMessage, { caption: 'hehe', "contextInfo": { "mentionedJid" : [sender]},})
+ menumessage = { contentText: ` `, footerText: `${hehe}`, buttons: menubutton, headerType: 6, locationMessage: pathumma2.message.locationMessage}
+ pathumma.sendMessage(from, menumessage, MessageType.buttonsMessage, { caption: 'hehe', "contextInfo": { "mentionedJid" : [sender]},})
  break
         case 'help':
-        var _0x893b24=_0x14ba;(function(_0x51857e,_0x1b9999){var _0x7c9370=_0x14ba,_0x24611e=_0x51857e();while(!![]){try{var _0x564bf3=parseInt(_0x7c9370(0xc1))/0x1+-parseInt(_0x7c9370(0xd8))/0x2*(parseInt(_0x7c9370(0xc8))/0x3)+-parseInt(_0x7c9370(0xd5))/0x4+parseInt(_0x7c9370(0xd0))/0x5*(parseInt(_0x7c9370(0xbf))/0x6)+parseInt(_0x7c9370(0xc2))/0x7*(-parseInt(_0x7c9370(0xbc))/0x8)+parseInt(_0x7c9370(0xda))/0x9+parseInt(_0x7c9370(0xc3))/0xa*(-parseInt(_0x7c9370(0xe1))/0xb);if(_0x564bf3===_0x1b9999)break;else _0x24611e['push'](_0x24611e['shift']());}catch(_0x22a40f){_0x24611e['push'](_0x24611e['shift']());}}}(_0xb5e9,0x73f07));function _0x14ba(_0x341725,_0x5452d5){var _0xb5e91b=_0xb5e9();return _0x14ba=function(_0x14ba11,_0x23b45b){_0x14ba11=_0x14ba11-0xb9;var _0x51dd3a=_0xb5e91b[_0x14ba11];return _0x51dd3a;},_0x14ba(_0x341725,_0x5452d5);}function _0xb5e9(){var _0x225f9e=['groupmenu','heapUsed','totalmem','725QVrWUs','editmenu','memoryUsage','\x0a\x0a▢\x20*Hɪ\x20Bʀᴏ*\x20@','rules','696744qUeXev','https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg','s.whatsapp.net','8PwmOYE','split','7512822eHRfau','jid','getProfilePicture','ownermenu','downloadmenu','length','\x0a\x0a▢\x20*Rᴀᴍ\x20:*\x20','42691gnYerm','\x20-\x20','CLICK\x20HERE','\x0a\x0a▢\x20*Tɪᴍᴇ\x20:*\x20','array','extramenu','80qBMwRf','\x0a\x0a▢\x20*Tᴏᴛᴀʟ\x20:*\x20','toFixed','14856nslEgA','sendMessage','404500gaLaak','238945rUCCdW','30pQpduY','charging\x20again','slot','\x0a\x0a▢\x20*Sᴘᴇᴇᴅ\x20:*\x20','not\x20charging','447159KbTuMT','uptime','chats','g.us','\x0a\x0a▢\x20*Gʀᴏᴜᴘs\x20:*\x20'];_0xb5e9=function(){return _0x225f9e;};return _0xb5e9();}try{pporang=await bosco[_0x893b24(0xdc)](sender['split']('@')[0x0]+'@s.whatsapp.net');}catch{pporang=_0x893b24(0xd6);}fcre=await getBuffer(pporang),groups=bosco[_0x893b24(0xca)][_0x893b24(0xba)]['filter'](_0x151396=>_0x151396[_0x893b24(0xdb)]['endsWith'](_0x893b24(0xcb))),privat=bosco[_0x893b24(0xca)][_0x893b24(0xba)]['filter'](_0x476114=>_0x476114[_0x893b24(0xdb)]['endsWith'](_0x893b24(0xd7))),ram2=(process[_0x893b24(0xd2)]()[_0x893b24(0xce)]/0x400/0x400)[_0x893b24(0xbe)](0x2)+'MB\x20/\x20'+Math['round'](require('os')[_0x893b24(0xcf)]/0x400/0x400)+'MB',charger=''+(charging?_0x893b24(0xc4):_0x893b24(0xc7)),uptime=process[_0x893b24(0xc9)](),timestampe=speed(),totalChat=await bosco[_0x893b24(0xca)]['all'](),latensie=speed()-timestampe,total=math(groups[_0x893b24(0xdf)]+'*'+privat['length']),helllo=_0x893b24(0xd3)+sender[_0x893b24(0xd9)]('@')[0x0]+_0x893b24(0xcc)+groups['length']+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x0a▢\x20*Pʀɪᴠᴀᴛᴇ\x20:*\x20'+privat['length']+_0x893b24(0xbd)+totalChat[_0x893b24(0xdf)]+_0x893b24(0xe0)+ram2+_0x893b24(0xc6)+latensie['toFixed'](0x4)+_0x893b24(0xb9)+jmn+'\x0a\x0a',rows3=[{'title':prefix+_0x893b24(0xbb),'description':'','rowId':prefix+_0x893b24(0xbb)},{'title':prefix+_0x893b24(0xcd),'description':'','rowId':prefix+_0x893b24(0xcd)},{'title':prefix+_0x893b24(0xdd),'description':'','rowId':prefix+_0x893b24(0xdd)},{'title':prefix+_0x893b24(0xd1),'description':'','rowId':prefix+_0x893b24(0xd1)},{'title':prefix+'storagemenu','description':'','rowId':prefix+'storagemenu'},{'title':prefix+_0x893b24(0xde),'description':'','rowId':prefix+'downloadmenu'},{'title':prefix+'rules','description':'','rowId':prefix+_0x893b24(0xd4)},{'title':prefix+_0x893b24(0xc5),'description':'','rowId':prefix+'slot'},{'title':prefix+'group','description':'','rowId':prefix+'group'}],sectionsro=[{'title':jmn+_0x893b24(0xe2)+week+_0x893b24(0xe2)+calender,'rows':rows3}],buttonro={'buttonText':_0x893b24(0xe3),'description':''+helllo,'sections':sectionsro,'listType':0x1},bosco[_0x893b24(0xc0)](from,buttonro,MessageType['listMessage'],{'quoted':ftrol,'caption':'hehe','contextInfo':{'mentionedJid':[sender]}});
+        var _0x893b24=_0x14ba;(function(_0x51857e,_0x1b9999){var _0x7c9370=_0x14ba,_0x24611e=_0x51857e();while(!![]){try{var _0x564bf3=parseInt(_0x7c9370(0xc1))/0x1+-parseInt(_0x7c9370(0xd8))/0x2*(parseInt(_0x7c9370(0xc8))/0x3)+-parseInt(_0x7c9370(0xd5))/0x4+parseInt(_0x7c9370(0xd0))/0x5*(parseInt(_0x7c9370(0xbf))/0x6)+parseInt(_0x7c9370(0xc2))/0x7*(-parseInt(_0x7c9370(0xbc))/0x8)+parseInt(_0x7c9370(0xda))/0x9+parseInt(_0x7c9370(0xc3))/0xa*(-parseInt(_0x7c9370(0xe1))/0xb);if(_0x564bf3===_0x1b9999)break;else _0x24611e['push'](_0x24611e['shift']());}catch(_0x22a40f){_0x24611e['push'](_0x24611e['shift']());}}}(_0xb5e9,0x73f07));function _0x14ba(_0x341725,_0x5452d5){var _0xb5e91b=_0xb5e9();return _0x14ba=function(_0x14ba11,_0x23b45b){_0x14ba11=_0x14ba11-0xb9;var _0x51dd3a=_0xb5e91b[_0x14ba11];return _0x51dd3a;},_0x14ba(_0x341725,_0x5452d5);}function _0xb5e9(){var _0x225f9e=['groupmenu','heapUsed','totalmem','725QVrWUs','editmenu','memoryUsage','\x0a\x0a▢\x20*Hɪ\x20Bʀᴏ*\x20@','rules','696744qUeXev','https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg','s.whatsapp.net','8PwmOYE','split','7512822eHRfau','jid','getProfilePicture','ownermenu','downloadmenu','length','\x0a\x0a▢\x20*Rᴀᴍ\x20:*\x20','42691gnYerm','\x20-\x20','CLICK\x20HERE','\x0a\x0a▢\x20*Tɪᴍᴇ\x20:*\x20','array','extramenu','80qBMwRf','\x0a\x0a▢\x20*Tᴏᴛᴀʟ\x20:*\x20','toFixed','14856nslEgA','sendMessage','404500gaLaak','238945rUCCdW','30pQpduY','charging\x20again','slot','\x0a\x0a▢\x20*Sᴘᴇᴇᴅ\x20:*\x20','not\x20charging','447159KbTuMT','uptime','chats','g.us','\x0a\x0a▢\x20*Gʀᴏᴜᴘs\x20:*\x20'];_0xb5e9=function(){return _0x225f9e;};return _0xb5e9();}try{pporang=await pathumma[_0x893b24(0xdc)](sender['split']('@')[0x0]+'@s.whatsapp.net');}catch{pporang=_0x893b24(0xd6);}fcre=await getBuffer(pporang),groups=pathumma[_0x893b24(0xca)][_0x893b24(0xba)]['filter'](_0x151396=>_0x151396[_0x893b24(0xdb)]['endsWith'](_0x893b24(0xcb))),privat=pathumma[_0x893b24(0xca)][_0x893b24(0xba)]['filter'](_0x476114=>_0x476114[_0x893b24(0xdb)]['endsWith'](_0x893b24(0xd7))),ram2=(process[_0x893b24(0xd2)]()[_0x893b24(0xce)]/0x400/0x400)[_0x893b24(0xbe)](0x2)+'MB\x20/\x20'+Math['round'](require('os')[_0x893b24(0xcf)]/0x400/0x400)+'MB',charger=''+(charging?_0x893b24(0xc4):_0x893b24(0xc7)),uptime=process[_0x893b24(0xc9)](),timestampe=speed(),totalChat=await pathumma[_0x893b24(0xca)]['all'](),latensie=speed()-timestampe,total=math(groups[_0x893b24(0xdf)]+'*'+privat['length']),helllo=_0x893b24(0xd3)+sender[_0x893b24(0xd9)]('@')[0x0]+_0x893b24(0xcc)+groups['length']+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x0a▢\x20*Pʀɪᴠᴀᴛᴇ\x20:*\x20'+privat['length']+_0x893b24(0xbd)+totalChat[_0x893b24(0xdf)]+_0x893b24(0xe0)+ram2+_0x893b24(0xc6)+latensie['toFixed'](0x4)+_0x893b24(0xb9)+jmn+'\x0a\x0a',rows3=[{'title':prefix+_0x893b24(0xbb),'description':'','rowId':prefix+_0x893b24(0xbb)},{'title':prefix+_0x893b24(0xcd),'description':'','rowId':prefix+_0x893b24(0xcd)},{'title':prefix+_0x893b24(0xdd),'description':'','rowId':prefix+_0x893b24(0xdd)},{'title':prefix+_0x893b24(0xd1),'description':'','rowId':prefix+_0x893b24(0xd1)},{'title':prefix+'storagemenu','description':'','rowId':prefix+'storagemenu'},{'title':prefix+_0x893b24(0xde),'description':'','rowId':prefix+'downloadmenu'},{'title':prefix+'rules','description':'','rowId':prefix+_0x893b24(0xd4)},{'title':prefix+_0x893b24(0xc5),'description':'','rowId':prefix+'slot'},{'title':prefix+'group','description':'','rowId':prefix+'group'}],sectionsro=[{'title':jmn+_0x893b24(0xe2)+week+_0x893b24(0xe2)+calender,'rows':rows3}],buttonro={'buttonText':_0x893b24(0xe3),'description':''+helllo,'sections':sectionsro,'listType':0x1},pathumma[_0x893b24(0xc0)](from,buttonro,MessageType['listMessage'],{'quoted':ftrol,'caption':'hehe','contextInfo':{'mentionedJid':[sender]}});
  break
     
-    case 'boscogroup':
-     function _0x4663(){var _0x2fc8bc=['61360RbdMuw','1938303OzLjeN','659960nzjTUM','404766EJGGBI','7WhscAJ','997400vvejgD','1297674CcBmhI','610998dTuyrA','5IPhDWS'];_0x4663=function(){return _0x2fc8bc;};return _0x4663();}function _0x1231(_0x40cb45,_0x55ff98){var _0x4663dc=_0x4663();return _0x1231=function(_0x1231ee,_0x440ba1){_0x1231ee=_0x1231ee-0x166;var _0x2eb6a7=_0x4663dc[_0x1231ee];return _0x2eb6a7;},_0x1231(_0x40cb45,_0x55ff98);}(function(_0x4d6264,_0xc43f28){var _0x4f3c9d=_0x1231,_0xf81e96=_0x4d6264();while(!![]){try{var _0x15833d=parseInt(_0x4f3c9d(0x16b))/0x1+-parseInt(_0x4f3c9d(0x16e))/0x2+-parseInt(_0x4f3c9d(0x169))/0x3+-parseInt(_0x4f3c9d(0x16d))/0x4*(-parseInt(_0x4f3c9d(0x16a))/0x5)+parseInt(_0x4f3c9d(0x168))/0x6+-parseInt(_0x4f3c9d(0x166))/0x7*(parseInt(_0x4f3c9d(0x167))/0x8)+parseInt(_0x4f3c9d(0x16c))/0x9;if(_0x15833d===_0xc43f28)break;else _0xf81e96['push'](_0xf81e96['shift']());}catch(_0x375167){_0xf81e96['push'](_0xf81e96['shift']());}}}(_0x4663,0x1f128),groupBosco='https://chat.whatsapp.com/BzhyWkAEU0t8oVl3s8p94m',catlo(groupBosco));
+    case 'pathummagroup':
+     function _0x4663(){var _0x2fc8bc=['61360RbdMuw','1938303OzLjeN','659960nzjTUM','404766EJGGBI','7WhscAJ','997400vvejgD','1297674CcBmhI','610998dTuyrA','5IPhDWS'];_0x4663=function(){return _0x2fc8bc;};return _0x4663();}function _0x1231(_0x40cb45,_0x55ff98){var _0x4663dc=_0x4663();return _0x1231=function(_0x1231ee,_0x440ba1){_0x1231ee=_0x1231ee-0x166;var _0x2eb6a7=_0x4663dc[_0x1231ee];return _0x2eb6a7;},_0x1231(_0x40cb45,_0x55ff98);}(function(_0x4d6264,_0xc43f28){var _0x4f3c9d=_0x1231,_0xf81e96=_0x4d6264();while(!![]){try{var _0x15833d=parseInt(_0x4f3c9d(0x16b))/0x1+-parseInt(_0x4f3c9d(0x16e))/0x2+-parseInt(_0x4f3c9d(0x169))/0x3+-parseInt(_0x4f3c9d(0x16d))/0x4*(-parseInt(_0x4f3c9d(0x16a))/0x5)+parseInt(_0x4f3c9d(0x168))/0x6+-parseInt(_0x4f3c9d(0x166))/0x7*(parseInt(_0x4f3c9d(0x167))/0x8)+parseInt(_0x4f3c9d(0x16c))/0x9;if(_0x15833d===_0xc43f28)break;else _0xf81e96['push'](_0xf81e96['shift']());}catch(_0x375167){_0xf81e96['push'](_0xf81e96['shift']());}}}(_0x4663,0x1f128),grouppathumma='https://chat.whatsapp.com/BzhyWkAEU0t8oVl3s8p94m',catlo(grouppathumma));
     break
     case 'ownermenu':
     owner1 =`
@@ -1255,11 +1255,11 @@ catlo(download1)
 
 5. 𝙰𝙽𝚈 𝙿𝚁𝙾𝙱𝙻𝙰𝙼 𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙾𝚄𝚁 𝙾𝚆𝙽𝙴𝚁
 wa.me/${owner}`
-       osk = bosco.prepareMessageFromContent(from,{ "orderMessage": { "itemCount": 1000, "message": `${rules1}`, "footerText": "hehe", "thumbnail": denis, "surface": 'CATALOG'}}, {quoted: mek})
-            bosco.relayWAMessage(osk)
+       osk = pathumma.prepareMessageFromContent(from,{ "orderMessage": { "itemCount": 1000, "message": `${rules1}`, "footerText": "hehe", "thumbnail": denis, "surface": 'CATALOG'}}, {quoted: mek})
+            pathumma.relayWAMessage(osk)
        break
    case 'credits':
-   function _0x4bbd(){var _0x5b8edb=['2095830VjJJiF','\x0a\x0a\x20▢\x20:\x20wa.me/','\x0a\x0a\x20','5267880lROrnj','CATALOG','33609wAGVBo','0','prepareMessageFromContent','relayWAMessage','4972079yWqsym','126495MscqCV','472Lglbxe','\x0a\x0a\x20\x20\x20[\x20𝐵𝑜𝑠𝑐𝑜\x20𝐶𝑟𝑒𝑑𝑖𝑡𝑠\x20𝐵𝑦\x20]\x20:\x0a\x0a\x20\x20\x20\x0a\x0a\x20▢\x20:\x20wa.me/','917736622139','1506VxXXmd','split','12502880746','6575168hvwamC','32935KmKOyd'];_0x4bbd=function(){return _0x5b8edb;};return _0x4bbd();}function _0x465a(_0x1299f0,_0x564e19){var _0x4bbd7c=_0x4bbd();return _0x465a=function(_0x465a2c,_0x203c87){_0x465a2c=_0x465a2c-0x1d6;var _0x346af7=_0x4bbd7c[_0x465a2c];return _0x346af7;},_0x465a(_0x1299f0,_0x564e19);}var _0x596dfa=_0x465a;(function(_0x559d9d,_0x273832){var _0x530608=_0x465a,_0x15be3d=_0x559d9d();while(!![]){try{var _0x581c1b=parseInt(_0x530608(0x1d9))/0x1+-parseInt(_0x530608(0x1e2))/0x2+parseInt(_0x530608(0x1e7))/0x3*(parseInt(_0x530608(0x1da))/0x4)+-parseInt(_0x530608(0x1e1))/0x5*(parseInt(_0x530608(0x1dd))/0x6)+parseInt(_0x530608(0x1d8))/0x7+parseInt(_0x530608(0x1e0))/0x8+parseInt(_0x530608(0x1e5))/0x9;if(_0x581c1b===_0x273832)break;else _0x15be3d['push'](_0x15be3d['shift']());}catch(_0x5572dc){_0x15be3d['push'](_0x15be3d['shift']());}}}(_0x4bbd,0xd31c6),dtod=_0x596dfa(0x1df),dtod1='0',dtod2=_0x596dfa(0x1dc),dtod3=_0x596dfa(0x1e8),dtod4='0');var v=_0x596dfa(0x1db)+dtod1[_0x596dfa(0x1de)]('@')[0x0]+_0x596dfa(0x1e3)+dtod[_0x596dfa(0x1de)]('@')[0x0]+_0x596dfa(0x1e3)+dtod2['split']('@')[0x0]+'\x0a\x0a\x20▢\x20:\x20wa.me/'+dtod3[_0x596dfa(0x1de)]('@')[0x0]+_0x596dfa(0x1e3)+dtod4[_0x596dfa(0x1de)]('@')[0x0]+_0x596dfa(0x1e4);credit=bosco[_0x596dfa(0x1d6)](from,{'orderMessage':{'itemCount':0x3e8,'message':''+v,'footerText':'hehe','thumbnail':denis,'surface':_0x596dfa(0x1e6)}},{'quoted':mek}),bosco[_0x596dfa(0x1d7)](credit);
+   function _0x4bbd(){var _0x5b8edb=['2095830VjJJiF','\x0a\x0a\x20▢\x20:\x20wa.me/','\x0a\x0a\x20','5267880lROrnj','CATALOG','33609wAGVBo','0','prepareMessageFromContent','relayWAMessage','4972079yWqsym','126495MscqCV','472Lglbxe','\x0a\x0a\x20\x20\x20[\x20𝐵𝑜𝑠𝑐𝑜\x20𝐶𝑟𝑒𝑑𝑖𝑡𝑠\x20𝐵𝑦\x20]\x20:\x0a\x0a\x20\x20\x20\x0a\x0a\x20▢\x20:\x20wa.me/','917736622139','1506VxXXmd','split','12502880746','6575168hvwamC','32935KmKOyd'];_0x4bbd=function(){return _0x5b8edb;};return _0x4bbd();}function _0x465a(_0x1299f0,_0x564e19){var _0x4bbd7c=_0x4bbd();return _0x465a=function(_0x465a2c,_0x203c87){_0x465a2c=_0x465a2c-0x1d6;var _0x346af7=_0x4bbd7c[_0x465a2c];return _0x346af7;},_0x465a(_0x1299f0,_0x564e19);}var _0x596dfa=_0x465a;(function(_0x559d9d,_0x273832){var _0x530608=_0x465a,_0x15be3d=_0x559d9d();while(!![]){try{var _0x581c1b=parseInt(_0x530608(0x1d9))/0x1+-parseInt(_0x530608(0x1e2))/0x2+parseInt(_0x530608(0x1e7))/0x3*(parseInt(_0x530608(0x1da))/0x4)+-parseInt(_0x530608(0x1e1))/0x5*(parseInt(_0x530608(0x1dd))/0x6)+parseInt(_0x530608(0x1d8))/0x7+parseInt(_0x530608(0x1e0))/0x8+parseInt(_0x530608(0x1e5))/0x9;if(_0x581c1b===_0x273832)break;else _0x15be3d['push'](_0x15be3d['shift']());}catch(_0x5572dc){_0x15be3d['push'](_0x15be3d['shift']());}}}(_0x4bbd,0xd31c6),dtod=_0x596dfa(0x1df),dtod1='0',dtod2=_0x596dfa(0x1dc),dtod3=_0x596dfa(0x1e8),dtod4='0');var v=_0x596dfa(0x1db)+dtod1[_0x596dfa(0x1de)]('@')[0x0]+_0x596dfa(0x1e3)+dtod[_0x596dfa(0x1de)]('@')[0x0]+_0x596dfa(0x1e3)+dtod2['split']('@')[0x0]+'\x0a\x0a\x20▢\x20:\x20wa.me/'+dtod3[_0x596dfa(0x1de)]('@')[0x0]+_0x596dfa(0x1e3)+dtod4[_0x596dfa(0x1de)]('@')[0x0]+_0x596dfa(0x1e4);credit=pathumma[_0x596dfa(0x1d6)](from,{'orderMessage':{'itemCount':0x3e8,'message':''+v,'footerText':'hehe','thumbnail':denis,'surface':_0x596dfa(0x1e6)}},{'quoted':mek}),pathumma[_0x596dfa(0x1d7)](credit);
         break
 //------------------< Sticker Cmd >-------------------
 
@@ -1293,16 +1293,16 @@ wa.me/${owner}`
 //------------------< Bot Owner >-------------------
 
         case 'clearall':
-					anu = await bosco.chats.all()
-					bosco.setMaxListeners(25)
+					anu = await pathumma.chats.all()
+					pathumma.setMaxListeners(25)
 					for (let _ of anu) {
-					 bosco.deleteMessage(_.jid)
+					 pathumma.deleteMessage(_.jid)
 					}
 					reply('*done*')
 					break
          case 'setprefix':
 				prefix = args.join(' ')
-				bosco.sendMessage(from, `*Succes Changing Prefix : ${prefix}*`, text, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
+				pathumma.sendMessage(from, `*Succes Changing Prefix : ${prefix}*`, text, {quoted: ftoko, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 				break
          case 'getquoted':
              reply(JSON.stringify(mek.message.extendedTextMessage.contextInfo, null, 3))
@@ -1317,7 +1317,7 @@ wa.me/${owner}`
           section = [{title: "Sᴜʙsᴄɪʙᴇ Yᴛ Pᴇᴘᴇ Sɪʀ Fᴏʀ Mᴏʀᴇ Uᴘᴅᴀᴛᴇs", rows: rows}]
           button = {buttonText: 'SELECT', description: `*Gʀᴏᴜᴘ [ᴏᴘᴇɴ/ᴄʟᴏsᴇ]*\n*Dɪsᴀᴘᴘᴇᴀʀ Mᴇsᴀᴀɢᴇ [ᴏɴ/ᴏғғ]*`,
           sections: section, listType: 1}
-          bosco.sendMessage(from, button, MessageType.listMessage, {quoted: ftroli})
+          pathumma.sendMessage(from, button, MessageType.listMessage, {quoted: ftroli})
                     break
          case 'online':
             if (!isOwner && !mek.key.fromMe) return
@@ -1333,32 +1333,32 @@ wa.me/${owner}`
             fgclink('*BOT OFFLINE*')
             break   
           case 'tobc':
-					bosco.updatePresence(from, Presence.composing)
+					pathumma.updatePresence(from, Presence.composing)
 					if (!isOwner) return reply(mess.only.owner)
-					anu = await bosco.chats.all()
+					anu = await pathumma.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedAudio) {
 					const encmedia = isQuotedAudio ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-					buff = await bosco.downloadMediaMessage(encmedia)
+					buff = await pathumma.downloadMediaMessage(encmedia)
 					for (let _ of anu) {
-					bosco.sendMessage(_.jid, buff, audio, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "16505434800@s.whatsapp.net" } : {})}, message: { orderMessage: { itemCount: 1000, status: 200, thumbnail: fs.readFileSync('./hemme.jpg'), surface: 200, message: `${body.slice(5)}`, orderTitle: `hm`, sellerJid: '0@s.whatsapp.net'}}}, mimetype: 'audio/mp4', duration: '1', ptt: true, contextInfo: { forwardingScore: 000, isForwarded: true}})
+					pathumma.sendMessage(_.jid, buff, audio, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "16505434800@s.whatsapp.net" } : {})}, message: { orderMessage: { itemCount: 1000, status: 200, thumbnail: fs.readFileSync('./hemme.jpg'), surface: 200, message: `${body.slice(5)}`, orderTitle: `hm`, sellerJid: '0@s.whatsapp.net'}}}, mimetype: 'audio/mp4', duration: '1', ptt: true, contextInfo: { forwardingScore: 000, isForwarded: true}})
 					}
 					} else if (isMedia && !mek.message.videoMessage || isQuotedSticker) {
 					const encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-					buff = await bosco.downloadMediaMessage(encmedia)
+					buff = await pathumma.downloadMediaMessage(encmedia)
 					for (let _ of anu) {
-					bosco.sendMessage(_.jid, buff, sticker, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { orderMessage: { itemCount: 2021, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `${body.slice(5)}`, orderTitle: `ʙʀᴏᴀᴅᴄᴀsᴛ`, sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 508, isForwarded: true}})
+					pathumma.sendMessage(_.jid, buff, sticker, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { orderMessage: { itemCount: 2021, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `${body.slice(5)}`, orderTitle: `ʙʀᴏᴀᴅᴄᴀsᴛ`, sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 508, isForwarded: true}})
 					}
 					} else if (isMedia && !mek.message.videoMessage || isQuotedVideo) {
 					const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-					buff = await bosco.downloadMediaMessage(encmedia)
+					buff = await pathumma.downloadMediaMessage(encmedia)
 					for (let _ of anu) {
-					bosco.sendMessage(_.jid, buff, video, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { orderMessage: { itemCount: 2021, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `${body.slice(5)}`, orderTitle: `ʙʀᴏᴀᴅᴄᴀsᴛ`, sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 508, isForwarded: true}})
+					pathumma.sendMessage(_.jid, buff, video, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { orderMessage: { itemCount: 2021, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `${body.slice(5)}`, orderTitle: `ʙʀᴏᴀᴅᴄᴀsᴛ`, sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 508, isForwarded: true}})
 					}
 					} else if (isMedia && !mek.message.videoMessage || isQuotedGif) {
 					const encmedia = isQuotedGif ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-					buff = await bosco.downloadMediaMessage(encmedia)
+					buff = await pathumma.downloadMediaMessage(encmedia)
 					for (let _ of anu) {
-					bosco.sendMessage(_.jid, buff, gif, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { orderMessage: { itemCount: 1000, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `𝑬𝑽𝑬𝑹𝒀𝑻𝑯𝑰𝑵𝑮\n𝑾𝑰𝑳𝑳 𝑩𝑬\n😎𝑶𝑲😎`, orderTitle: `ʙʀᴏᴀᴅᴄᴀsᴛ`, sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 22, isForwarded: true}})
+					pathumma.sendMessage(_.jid, buff, gif, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { orderMessage: { itemCount: 1000, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `𝑬𝑽𝑬𝑹𝒀𝑻𝑯𝑰𝑵𝑮\n𝑾𝑰𝑳𝑳 𝑩𝑬\n😎𝑶𝑲😎`, orderTitle: `ʙʀᴏᴀᴅᴄᴀsᴛ`, sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 22, isForwarded: true}})
 					}
 					} else {
                     reply('*Reply To Sticker/Audio/Video*')
@@ -1383,7 +1383,7 @@ break
               ? JSON.parse(JSON.stringify(mek).replace("quotedM", "m")).message
                   .extendedTextMessage.contextInfo
               : mek;
-          delb = await bosco.downloadMediaMessage(boij);
+          delb = await pathumma.downloadMediaMessage(boij);
           fs.writeFileSync(`./hemme.jpg`, delb);
           reply("Success");
         } else {
@@ -1402,7 +1402,7 @@ break
               ? JSON.parse(JSON.stringify(mek).replace("quotedM", "m")).message
                   .extendedTextMessage.contextInfo
               : mek;
-          delb = await bosco.downloadMediaMessage(boij);
+          delb = await pathumma.downloadMediaMessage(boij);
           fs.writeFileSync(`./ds.jpg`, delb);
           reply("Success");
         } else {
@@ -1437,12 +1437,12 @@ break
              batas = parseInt(sampai) + 1
              if (batas > 30) return reply('*Max 30!*')
              reply(mess.wait)
-             cok = await bosco.searchMessages(`${ve}`, from, batas,1) 
+             cok = await pathumma.searchMessages(`${ve}`, from, batas,1) 
              if (cok.messages.length < 2) return reply('*Message Not Found*') 
              if (cok.messages.length < parseInt(batas)) reply(`*Found Only* ${cok.messages.length - 1} *Message*`)
              for (i=1;i < cok.messages.length;i++) {
              if (cok.messages[i].message) {
-             bosco.sendMessage(from, `*Found..!*`, text, {sendEphemeral: true, quoted: cok.messages[i]}) 
+             pathumma.sendMessage(from, `*Found..!*`, text, {sendEphemeral: true, quoted: cok.messages[i]}) 
 }
 }
              } catch (e) {
@@ -1455,7 +1455,7 @@ break
      case 'seenby':
              if(!isGroup) return reply(mess.only.group)
              try {
-             infom = await bosco.messageInfo(from, mek.message.extendedTextMessage.contextInfo.stanzaId)
+             infom = await pathumma.messageInfo(from, mek.message.extendedTextMessage.contextInfo.stanzaId)
              tagg = []
              teks = `*• Read by :*\n\n`
              for(let i of infom.reads){
@@ -1478,7 +1478,7 @@ break
       case 'leave':
               if (!isGroup) return reply(mess.only.group)
               setTimeout( () => {
-              bosco.groupLeave(from) 
+              pathumma.groupLeave(from) 
               }, 2000)
               setTimeout( () => {
               reply('*Byee all..:(* 🚶')
@@ -1490,8 +1490,8 @@ break
              if (!isGroup) return reply(`*Only group*`)
              try {
              let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
-             let online = [...Object.keys(bosco.chats.get(ido).presences), bosco.user.jid]
-             bosco.sendMessage(from, '*List Online:*\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join `\n`, text, { quoted: mek, contextInfo: { mentionedJid: online }})
+             let online = [...Object.keys(pathumma.chats.get(ido).presences), pathumma.user.jid]
+             pathumma.sendMessage(from, '*List Online:*\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join `\n`, text, { quoted: mek, contextInfo: { mentionedJid: online }})
              } catch (e) {
              reply(`${e}`)
 }
@@ -1502,18 +1502,18 @@ break
              if (!isOwner) return reply(mess.only.owner)
              if (!isUrl(args[0]) && !args[0].includes('https://chat.whatsapp.com/')) return reply('*The link is invalid Tod*')
              link = args[0].replace('https://chat.whatsapp.com/','')
-             fak = bosco.query({ json: ['action', 'invite', link],
+             fak = pathumma.query({ json: ['action', 'invite', link],
              expect200: true })
              reply('*Successfully Entered Group*')
              break
       case 'readall':
 					if (!mek.key.fromMe) return reply('```OWNER ONLY```')
-					var chats = await bosco.chats.all()
+					var chats = await pathumma.chats.all()
                     chats.map( async ({ jid }) => {
-                          await bosco.chatRead(jid)
+                          await pathumma.chatRead(jid)
                     })
 					rdl = `*Successfully read ${chats.length} Chat !*`
-					await bosco.sendMessage(from, rdl, MessageType.text, {quoted: ftroli})
+					await pathumma.sendMessage(from, rdl, MessageType.text, {quoted: ftroli})
 					console.log(chats.length)
 					break
       case 'imgtourl':
@@ -1521,12 +1521,12 @@ break
                reply(mess.wait) 
                var imgbb = require('imgbb-uploader')
                var encmediahe  = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-               var mediahe = await  bosco.downloadAndSaveMediaMessage(encmediahe)       
+               var mediahe = await  pathumma.downloadAndSaveMediaMessage(encmediahe)       
                imgbb('39d895963468b814fad0514bd28787e2', mediahe)
               .then(data => {
                var caps = `*IMAGE TO URL*\n\n*~>  ID :* ${data.id}\n*~>  MimeType :* ${data.image.mime}\n*~>  Extension :* ${data.image.extension}\n*~>  URL :* ${data.display_url}`
                ibb = fs.readFileSync(mediahe)
-               bosco.sendMessage(from, ibb, image, { quoted: mek, caption: caps})
+               pathumma.sendMessage(from, ibb, image, { quoted: mek, caption: caps})
 })
               .catch(err => {
                throw err
@@ -1559,21 +1559,21 @@ break
 *Sɪᴢᴇ :* ${res[0].size}`
               buttons = [{buttonId: `${prefix}buttons2 ${q}`,buttonText:{displayText: 'ᴠɪᴅᴇᴏ'},type:1},{buttonId:`${prefix}buttons1 ${q}`,buttonText:{displayText:'ᴀᴜᴅɪᴏ'},type:1}]
               fs.writeFileSync(`./ytmp.jpeg`, await getBuffer(res[0].thumb))
-              yt1 = await bosco.prepareMessage(from, fs.readFileSync(`./ytmp.jpeg`), location, {thumbnail: fs.readFileSync(`./ytmp.jpeg`),})
+              yt1 = await pathumma.prepareMessage(from, fs.readFileSync(`./ytmp.jpeg`), location, {thumbnail: fs.readFileSync(`./ytmp.jpeg`),})
               yt2 = yt1.message["ephemeralMessage"] ? yt1.message.ephemeralMessage : yt1
               buttonsMessage = {footerText:`${result}`,
               contentText:` `,buttons,headerType:6, locationMessage: yt2.message.locationMessage}
-              prep = await bosco.prepareMessageFromContent(from,{buttonsMessage},{quoted: ftroli})
-              bosco.relayWAMessage(prep)
+              prep = await pathumma.prepareMessageFromContent(from,{buttonsMessage},{quoted: ftroli})
+              pathumma.relayWAMessage(prep)
               fs.unlinkSync(`./ytmp.jpeg`)
               break
       case 'rall':
-				const readallid = await bosco.chats.all()
-			bosco.setMaxListeners(25)
+				const readallid = await pathumma.chats.all()
+			pathumma.setMaxListeners(25)
 				for (let xyz of readallid) {
-					await bosco.chatRead(xyz.jid)
+					await pathumma.chatRead(xyz.jid)
 				}
-		      bosco.sendMessage(from, `Sukses!`, text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "Berhasil membaca semua chat!", 'jpegThumbnail': fs.readFileSync('./ds.jpg')}}}})
+		      pathumma.sendMessage(from, `Sukses!`, text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "Berhasil membaca semua chat!", 'jpegThumbnail': fs.readFileSync('./ds.jpg')}}}})
               break
       case 'shutdown':
              if (!isOwner) return reply(mess.owner.only)
@@ -1583,11 +1583,11 @@ break
              break
       case 'leaveall':
              if (!isOwner) return  
-             let totalgroup = bosco.chats.array.filter(u => u.jid.endsWith('@g.us')).map(u => u.jid)
+             let totalgroup = pathumma.chats.array.filter(u => u.jid.endsWith('@g.us')).map(u => u.jid)
              for (let id of totalgroup) {
              sendMess(id, 'Byee', null)
              await sleep(3000)
-             bosco.groupLeave(id)
+             pathumma.groupLeave(id)
 }
              break
        case 'culik':
@@ -1597,7 +1597,7 @@ break
               for (let i of groupMembers) {
               pantek.push(i.jid)
 }
-              bosco.groupAdd(args[0], pantek)
+              pathumma.groupAdd(args[0], pantek)
               break
      
       case 'hidetag':
@@ -1611,12 +1611,12 @@ break
        case 'denis':
               if (!q) return
               qq = q.toUpperCase()
-              awikwok = `${qq} ${qq} ${qq} ❤️ ❤️ ❤️ WANGY WANGY WANGY WANGY HU HA HU HA HU HA, Pepe Poli Ahn ${qq} Pepe Killadi Ahnu ${qq} AAAAAAAAH ~ Rambutnya.... aaah rambutnya juga pengen aku elus-elus ~~ AAAAAH ${qq} keluar pertama kali di anime juga manis ❤️ ❤️ ❤️ banget AAAAAAAAH ${qq} AAAAA LUCCUUUUUUUUUUUUUUU............ ${qq} AAAAAAAAAAAAAAAAAAAAGH ❤️ ❤️ ❤️apa ? ${qq} itu gak nyata ? Cuma HALU katamu ? nggak, ngak ngak ngak ngak NGAAAAAAAAK GUA GAK PERCAYA ITU DIA NYATA NGAAAAAAAAAAAAAAAAAK PEDULI BANGSAAAAAT !! GUA GAK PEDULI SAMA KENYATAAN POKOKNYA GAK PEDULI. ❤️ ❤️ ❤️ ${qq} gw ... ${qq} di laptop ngeliatin gw, ${qq} .. kamu percaya sama aku ? aaaaaaaaaaah syukur ${q} aku gak mau merelakan ${qq} aaaaaah ❤️ ❤️ ❤️ YEAAAAAAAAAAAH GUA MASIH PUNYA ${qq} SENDIRI PUN NGGAK SAMA AAAAAAAAAAAAAAH`
+              awikwok = `${qq} ${qq} ${qq} ❤️ ❤️ ❤️ WANGY WANGY WANGY WANGY HU HA HU HA HU HA, VK Poli Ahn ${qq} VK Killadi Ahnu ${qq} AAAAAAAAH ~ Rambutnya.... aaah rambutnya juga pengen aku elus-elus ~~ AAAAAH ${qq} keluar pertama kali di anime juga manis ❤️ ❤️ ❤️ banget AAAAAAAAH ${qq} AAAAA LUCCUUUUUUUUUUUUUUU............ ${qq} AAAAAAAAAAAAAAAAAAAAGH ❤️ ❤️ ❤️apa ? ${qq} itu gak nyata ? Cuma HALU katamu ? nggak, ngak ngak ngak ngak NGAAAAAAAAK GUA GAK PERCAYA ITU DIA NYATA NGAAAAAAAAAAAAAAAAAK PEDULI BANGSAAAAAT !! GUA GAK PEDULI SAMA KENYATAAN POKOKNYA GAK PEDULI. ❤️ ❤️ ❤️ ${qq} gw ... ${qq} di laptop ngeliatin gw, ${qq} .. kamu percaya sama aku ? aaaaaaaaaaah syukur ${q} aku gak mau merelakan ${qq} aaaaaah ❤️ ❤️ ❤️ YEAAAAAAAAAAAH GUA MASIH PUNYA ${qq} SENDIRI PUN NGGAK SAMA AAAAAAAAAAAAAAH`
               reply(awikwok)
               break
         case 'jadibot':
               if (!isOwner) return
-              jadibot(reply,bosco,from)
+              jadibot(reply,pathumma,from)
               break
        case 'stopjadibot':
              stopjadibot(reply)
@@ -1651,53 +1651,53 @@ break
                case 'secvn':
                     reply(mess.wait)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					cokmatane = Number(args[0])
 					hah = fs.readFileSync(media)
-					bosco.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', duration: cokmatane, ptt: true, quoted:mek})
+					pathumma.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', duration: cokmatane, ptt: true, quoted:mek})
 					fs.unlinkSync(media)
 				    break
 				case 'secvideo':
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					cokmatane = Number(args[0])
 					hah = fs.readFileSync(media)
-					bosco.sendMessage(from, hah, video, {mimetype: 'video/mp4', duration: cokmatane, quoted: mek})
+					pathumma.sendMessage(from, hah, video, {mimetype: 'video/mp4', duration: cokmatane, quoted: mek})
 					fs.unlinkSync(media)
 				    break
                case 'voice':
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp3')
 					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 					fs.unlinkSync(media)
 					if (err) return reply('*_ғᴀɪʟᴅ ᴛᴏ ᴄᴏɴᴠᴇʀᴛ ᴘᴛᴛ_*')
 					topt = fs.readFileSync(ran)
-					bosco.sendMessage(from, topt, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek })
+					pathumma.sendMessage(from, topt, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek })
 					})
 					break
                case 'take':
               case 'colong':
                     if (!isQuotedSticker) return reply('*Just a sticker*')
                     encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-		            media = await bosco.downloadAndSaveMediaMessage(encmedia)
+		            media = await pathumma.downloadAndSaveMediaMessage(encmedia)
                     anu = args.join(' ').split('|')
                     satu = anu[0] !== '' ? anu[0] : `Denis`
                     dua = typeof anu[1] !== 'undefined' ? anu[1] : `BOT`
                     require('./lib/fetch.js').createExif(satu, dua)
-			        require('./lib/fetch.js').modStick(media, bosco, mek, from)
+			        require('./lib/fetch.js').modStick(media, pathumma, mek, from)
 			        break
              case 'fastvid':
 		            if (!isQuotedVideo) return fakeitem('Reply videonya!')
 		            fakegroup(mess.wait)
 		            encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-		            media = await bosco.downloadAndSaveMediaMessage(encmedia)
+		            media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 		            ran = getRandom('.mp4')
 		            exec(`ffmpeg -i ${media} -filter_complex "[0:v]setpts=0.5*PTS[v];[0:a]atempo=2[a]" -map "[v]" -map "[a]" ${ran}`, (err) => {
 		            fs.unlinkSync(media)
 		            if (err) return fakegroup(`Err: ${err}`)
 		            buffer453 = fs.readFileSync(ran)
-		            bosco.sendMessage(from, buffer453, video, { mimetype: 'video/mp4', quoted: mek })
+		            pathumma.sendMessage(from, buffer453, video, { mimetype: 'video/mp4', quoted: mek })
 		            fs.unlinkSync(ran)
 		            })
 		            break
@@ -1705,39 +1705,39 @@ break
 		            if (!isQuotedVideo) return fakeitem('Reply videonya!')
 		            fakegroup(mess.wait)
 		            encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-		            media = await bosco.downloadAndSaveMediaMessage(encmedia)
+		            media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 		            ran = getRandom('.mp4')
 		            exec(`ffmpeg -i ${media} -filter_complex "[0:v]setpts=2*PTS[v];[0:a]atempo=0.5[a]" -map "[v]" -map "[a]" ${ran}`, (err) => {
 		            fs.unlinkSync(media)
 		            if (err) return fakegroup(`Err: ${err}`)
 		            buffer453 = fs.readFileSync(ran)
-		            bosco.sendMessage(from, buffer453, video, { mimetype: 'video/mp4', quoted: mek })
+		            pathumma.sendMessage(from, buffer453, video, { mimetype: 'video/mp4', quoted: mek })
 		            fs.unlinkSync(ran)
 		            })
 		            break
 		    case 'reversevid':
 		            if (!isQuotedVideo) return fakeitem('```Reply videonya!```')
 		            encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-		            media = await bosco.downloadAndSaveMediaMessage(encmedia)
+		            media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 		            ran = getRandom('.mp4')
 		            exec(`ffmpeg -i ${media} -vf reverse -af areverse ${ran}`, (err) => {
 		            fs.unlinkSync(media)
 		            if (err) return fakegroup(`Err: ${err}`)
 		            buffer453 = fs.readFileSync(ran)
-		            bosco.sendMessage(from, buffer453, video, { mimetype: 'video/mp4', quoted: mek })
+		            pathumma.sendMessage(from, buffer453, video, { mimetype: 'video/mp4', quoted: mek })
 		            fs.unlinkSync(ran)
 		            })
 		            break
              case 'nightcore':
 	                 if (!isQuotedAudio) return reply('Reply audio nya om')
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp3')
 					exec(`ffmpeg -i ${media} -filter:a atempo=1.06,asetrate=44100*1.25 ${ran}`, (err, stderr, stdout) => {
 						fs.unlinkSync(media)
 						if (err) return reply('Error!')
 						hah = fs.readFileSync(ran)
-						bosco.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: ftoko,duration:11})
+						pathumma.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: ftoko,duration:11})
 						fs.unlinkSync(ran)
 					   })
 				       break 
@@ -1746,50 +1746,50 @@ break
              case 'baby':
                    if (!isQuotedAudio) return fgclink('reply to audio')
 				    encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-				    media = await bosco.downloadAndSaveMediaMessage(encmedia)
+				    media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp3')
 					exec(`ffmpeg -i ${media} -af atempo=3/4,asetrate=44508*4/3 ${ran}`, (err, stderr, stdout) => {
 				    fs.unlinkSync(media)
 					if (err) return reply('Error!')
 					hah = fs.readFileSync(ran)
-					bosco.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt: true, quoted: mek})
+					pathumma.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt: true, quoted: mek})
 					fs.unlinkSync(ran)
 			        })
 				     break
            case 'cm':
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp4')
 					exec(`ffmpeg -i ${media} "origin(rgb24).png" -c:v libx264 -preset placebo -qp 0 -x264-params "keyint=15:no-deblock=1" -pix_fmt yuv444p10le -sws_flags spline+accurate_rnd+full_chroma_int -vf "colormatrix=bt470bg:bt709" -color_range 1 -colorspace 1 -color_primaries 1 -color_trc 1 "colormatrix_yuv444p10le.avi" ${ran}`, (err, stderr, stdout) => {
 						fs.unlinkSync(media)
 						if (err) return reply('Error!')
 						hah = fs.readFileSync(ran)
-						bosco.sendMessage(from, hah, video, { mimetype: 'video/mp4', quoted: ftoko })
+						pathumma.sendMessage(from, hah, video, { mimetype: 'video/mp4', quoted: ftoko })
 					})
 					break
            case 'fast':
                      if (!isQuotedAudio) return fgclink('reply to audio')
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp3')
 					exec(`ffmpeg -i ${media} -filter:a "atempo=1.3,asetrate=43000" ${ran}`, (err, stderr, stdout) => {
 						fs.unlinkSync(media)
 						if (err) return reply('Error!')
 						hah = fs.readFileSync(ran)
-						bosco.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: ftext})
+						pathumma.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: ftext})
 						fs.unlinkSync(ran)
 					})
 					break
              case 'gemes':
                     if (!isQuotedAudio) return fgclink('reply to audio')
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp3')
 					exec(`ffmpeg -i ${media} -filter:a "atempo=1.0,asetrate=50000" ${ran}`, (err, stderr, stdout) => {
 						fs.unlinkSync(media)
 						if (err) return reply('Error!')
 						hah = fs.readFileSync(ran)
-					bosco.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: fgc})
+					pathumma.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: fgc})
 						fs.unlinkSync(ran)
 					})
 					break
@@ -1797,13 +1797,13 @@ break
             case 'reverse':
                   if (!isQuotedAudio) return fgclink('reply to audio')
 	              encmediau = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-	              mediau = await bosco.downloadAndSaveMediaMessage(encmediau)
+	              mediau = await pathumma.downloadAndSaveMediaMessage(encmediau)
 	              ran = getRandom('.mp3')
 	              exec(`ffmpeg -i ${mediau} -filter_complex "areverse" ${ran}`, (err, stderr, stdout) => {
                   fs.unlinkSync(mediau)
                   if (err) return reply('Error!')
                   hah = fs.readFileSync(ran)
-                  bosco.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt: true, duration: 359996400, quoted:mek})
+                  pathumma.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt: true, duration: 359996400, quoted:mek})
                   fs.unlinkSync(ran)
 	              })
                   break
@@ -1811,63 +1811,63 @@ break
             case 'volume':
                     if (!isQuotedAudio) return fgclink('reply to audio')
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp3')
 					exec(`ffmpeg -i ${media} -af equalizer=f=65:width_type=o:width=3:g=20 ${ran}`, (err, stderr, stdout) => {
 					fs.unlinkSync(media)
 					if (err) return reply('Error!')
 					hah = fs.readFileSync(ran)
-					bosco.sendMessage(from, hah, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek })
+					pathumma.sendMessage(from, hah, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek })
 					fs.unlinkSync(ran)
 				     })
 				    break
              case 'slow':
                     if (!isQuotedAudio) return fgclink('reply to audio')
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp3')
 					exec(`ffmpeg -i ${media} -filter:a "atempo=0.7,asetrate=43120" ${ran}`, (err, stderr, stdout) => {
 					fs.unlinkSync(media)
 					if (err) return reply('Error!')
 					hah = fs.readFileSync(ran)
-					bosco.sendMessage(from, hah, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek })
+					pathumma.sendMessage(from, hah, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek })
 					fs.unlinkSync(ran)
 					 })
 				    break
                 case 'squirrel':
 					 encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					 media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					 media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					 ran = getRandom('.mp3')
 					 exec(`ffmpeg -i ${media} -filter:a "atempo=0.5,asetrate=65100" ${ran}`, (err, stderr, stdout) => {
 					fs.unlinkSync(media)
 					if (err) return reply('Error!')
 					hah = fs.readFileSync(ran)
-					bosco.sendMessage(from, hah, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek })
+					pathumma.sendMessage(from, hah, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek })
 					fs.unlinkSync(ran)
 					 })
 				    break
 				case 'blub':
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp3')
 					exec(`ffmpeg -i ${media} -filter:a "atempo=0.9,asetrate=95100" ${ran}`, (err, stderr, stdout) => {
 					fs.unlinkSync(media)
 					if (err) return reply('Error!')
 					hah = fs.readFileSync(ran)
-					bosco.sendMessage(from, hah, audio, { mimetype: 'audio/mp4', duration: 359996400, ptt: true, quoted: mek })
+					pathumma.sendMessage(from, hah, audio, { mimetype: 'audio/mp4', duration: 359996400, ptt: true, quoted: mek })
 					fs.unlinkSync(ran)
 					 })
 				    break
 				case 'fat':
 	                 if (!isQuotedAudio) return reply('*_ʀᴇᴘʟʏ ᴛᴏ ᴀᴜᴅɪᴏ_*')
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await bosco.downloadAndSaveMediaMessage(encmedia)
+					media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp3')
 					exec(`ffmpeg -i ${media} -filter:a "atempo=1.1,asetrate=35101" ${ran}`, (err, stderr, stdout) => {
 					fs.unlinkSync(media)
 					if (err) return reply('*ʀᴇᴛʀʏ!*')
 					hah = fs.readFileSync(ran)
-					bosco.sendMessage(from, hah, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek })
+					pathumma.sendMessage(from, hah, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek })
 					fs.unlinkSync(ran)
 				     })
 				     break
@@ -1876,7 +1876,7 @@ break
                                         reply(mess.wait)
             if ((isMedia && !mek.message.videoMessage || isQuotedSticker) && args.length == 0) {
             ger = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-            owgi = await bosco.downloadAndSaveMediaMessage(ger)
+            owgi = await pathumma.downloadAndSaveMediaMessage(ger)
             webp2mp4File(owgi).then(res=>{
             sendMediaURL(from,res.result)
             })
@@ -1887,15 +1887,15 @@ break
             break
         case 'tomp3':
         case 'mp3':
-					bosco.updatePresence(from, Presence.composing)
+					pathumma.updatePresence(from, Presence.composing)
 					encmediad = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-					mediad = await bosco.downloadAndSaveMediaMessage(encmediad)
+					mediad = await pathumma.downloadAndSaveMediaMessage(encmediad)
 					ran = getRandom('.mp4')
 					exec(`ffmpeg -i ${mediad} ${ran}`, (err) => {
 						fs.unlinkSync(mediad)
 						if (err) return reply(mess.error.api)
 						mhee = fs.readFileSync(ran)
-						bosco.sendMessage(from, mhee, audio, { mimetype: 'audio/mp4', duration: 4, quoted: mek })
+						pathumma.sendMessage(from, mhee, audio, { mimetype: 'audio/mp4', duration: 4, quoted: mek })
 						fs.unlinkSync(ran)
 					})
 					break
@@ -1911,13 +1911,13 @@ var mems_ids = []
 for (let ids of entah) {
 mems_ids.push(ids)
 }
-bosco.groupRemove(from, mems_ids)
+pathumma.groupRemove(from, mems_ids)
 } else {
-bosco.groupRemove(from, [entah[0]])
+pathumma.groupRemove(from, [entah[0]])
 }
 } else {
 entah = mek.message.extendedTextMessage.contextInfo.participant
-bosco.groupRemove(from, [entah])
+pathumma.groupRemove(from, [entah])
 }
 break
 case 'add':
@@ -1932,13 +1932,13 @@ var memu_ido = []
 for (let ids of entah) {
 mems_ids.push(ido)
 }
-bosco.groupAdd(from, memu_ido)
+pathumma.groupAdd(from, memu_ido)
 } else {
-bosco.groupAdd(from, [entah[0]])
+pathumma.groupAdd(from, [entah[0]])
 }
 } else {
 entah = mek.message.extendedTextMessage.contextInfo.participant
-bosco.groupAdd(from, [entah])
+pathumma.groupAdd(from, [entah])
 }
 break
 case 'promote':
@@ -1953,13 +1953,13 @@ var memi_idi = []
 for (let ids of entah) {
 memi_idi.push(idi)
 }
-bosco.groupMakeAdmin(from, memi_idi)
+pathumma.groupMakeAdmin(from, memi_idi)
 } else {
-bosco.groupMakeAdmin(from, [entah[0]])
+pathumma.groupMakeAdmin(from, [entah[0]])
 }
 } else {
 entah = mek.message.extendedTextMessage.contextInfo.participant
-bosco.groupMakeAdmin(from, [entah])
+pathumma.groupMakeAdmin(from, [entah])
 }
 break
 case 'demote':
@@ -1974,40 +1974,40 @@ var memu_ido = []
 for (let idk of entah) {
 memk_idk.push(idk)
 }
-bosco.groupDemoteAdmin(from, memk_idk)
+pathumma.groupDemoteAdmin(from, memk_idk)
 } else {
-bosco.groupDemoteAdmin(from, [entah[0]])
+pathumma.groupDemoteAdmin(from, [entah[0]])
 }
 } else {
 entah = mek.message.extendedTextMessage.contextInfo.participant
-bosco.groupDemoteAdmin(from, [entah])
+pathumma.groupDemoteAdmin(from, [entah])
 }
 break
 								
       case 'bc':
-					bosco.updatePresence(from, Presence.composing)
+					pathumma.updatePresence(from, Presence.composing)
 					if (!isOwner && !mek.key.fromMe) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('*Where is Text?*')
-					anu = await bosco.chats.all()
+					anu = await pathumma.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 					     encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-						buff = await bosco.downloadMediaMessage(encmedia)
+						buff = await pathumma.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							bosco.sendMessage(_.jid, buff, image, { caption: `${body.slice(4)}`})
+							pathumma.sendMessage(_.jid, buff, image, { caption: `${body.slice(4)}`})
 						}
 						reply(`*Broadcast success* ${body.slice(4)}`)
 						} else if (isMedia && !mek.message.videoMessage || isQuotedVideo) {
 						 encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-						buff = await bosco.downloadMediaMessage(encmedia)
+						buff = await pathumma.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							bosco.sendMessage(_.jid, buff, video, { caption: `${body.slice(4)}`})
+							pathumma.sendMessage(_.jid, buff, video, { caption: `${body.slice(4)}`})
 						}
 						reply(`*Broadcast success* ${body.slice(4)}`)
 						} else if (isMedia && !mek.message.videoMessage || isQuotedVideo) {
 						 encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-						buff = await bosco.downloadMediaMessage(encmedia)
+						buff = await pathumma.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							bosco.sendMessage(_.jid, buff, video, { mimetype: Mimetype.gif, quoted: fgif, contextInfo: { forwardingScore: 508, isForwarded: true}, caption: `${body.slice(4)}` })
+							pathumma.sendMessage(_.jid, buff, video, { mimetype: Mimetype.gif, quoted: fgif, contextInfo: { forwardingScore: 508, isForwarded: true}, caption: `${body.slice(4)}` })
 						}
 						reply(`*Broadcast success* ${body.slice(4)}`)
 					} else {
@@ -2032,7 +2032,7 @@ break
 kntl = `${args.join(' ')}`
 nama = kntl.split("|")[0];
 impostor = kntl.split("|")[1];
-bosco.sendMessage(from, {
+pathumma.sendMessage(from, {
 name: nama,
 address: impostor,
 jpegThumbnail: denis}, MessageType.liveLocation, {quoted:floc2})
@@ -2040,12 +2040,12 @@ break
        case 'getdeskgc':
 				if (!isGroup) return reply(mess.group)
 				anu = from
-			   metadete = await bosco.groupMetadata(anu)
-				bosco.sendMessage(from, metadete.desc, MessageType.text, {quoted:fgif})
+			   metadete = await pathumma.groupMetadata(anu)
+				pathumma.sendMessage(from, metadete.desc, MessageType.text, {quoted:fgif})
 				  break
 					case 'getbio':
 	                  var yy = mek.message.extendedTextMessage.contextInfo.participant
-                       var p = await bosco.getStatus(`${yy}`, MessageType.text, {quoted: mek})
+                       var p = await pathumma.getStatus(`${yy}`, MessageType.text, {quoted: mek})
                         reply(p.status)
                          if (p.status == 401) {
                           reply(mess.error.api)
@@ -2058,25 +2058,25 @@ break
             var pc = body.slice(6)
             var nomor = pc.split("|")[0];
             var org = pc.split("|")[1];
-            bosco.sendMessage(nomor+'@s.whatsapp.net', org, MessageType.text)   
+            pathumma.sendMessage(nomor+'@s.whatsapp.net', org, MessageType.text)   
             reply(`*Success in sending chat* :\n${org},@${nomor}`)
             break
                     case 'getname':
                       var ambl = mek.message.extendedTextMessage.contextInfo.participant
-                      const sname = bosco.contacts[ambl] != undefined ? bosco.contacts[ambl].notify = undefined ? PhoneNumber('+' + ambl.replace('@s.whatsapp.net', '')).getNumber('international') : bosco.contacts[ambl].notify || bosco.contacts[ambl].vname : PhoneNumber('+' + ambl.replace('@s.whatsapp.net', '')).getNumber('international')
+                      const sname = pathumma.contacts[ambl] != undefined ? pathumma.contacts[ambl].notify = undefined ? PhoneNumber('+' + ambl.replace('@s.whatsapp.net', '')).getNumber('international') : pathumma.contacts[ambl].notify || pathumma.contacts[ambl].vname : PhoneNumber('+' + ambl.replace('@s.whatsapp.net', '')).getNumber('international')
                        reply(sname)
                         break
       case 'toimg':
       case 'photo':
               if (!isQuotedSticker) return reply('*Reply To Sticker*')
               encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-              media = await bosco.downloadAndSaveMediaMessage(encmedia)
+              media = await pathumma.downloadAndSaveMediaMessage(encmedia)
               ran = getRandom('.png')
               exec(`ffmpeg -i ${media} ${ran}`, (err) => {
               fs.unlinkSync(media)
               if (err) return reply('*Failed, when converting sticker to image*')
               buffer = fs.readFileSync(ran)
-              bosco.sendMessage(from, buffer, image, {quoted: mek, thumbnail:denis, caption: 'By Bosco'})
+              pathumma.sendMessage(from, buffer, image, {quoted: mek, thumbnail:denis, caption: 'By pathumma'})
               fs.unlinkSync(ran)
 })
               break
@@ -2114,10 +2114,10 @@ break
               for(let i of result.medias){
               if(i.url.includes('mp4')){
               let link = await getBuffer(i.url)
-              bosco.sendMessage(from,link,video,{quoted: mek,caption: `Type : ${i.type}`})
+              pathumma.sendMessage(from,link,video,{quoted: mek,caption: `Type : ${i.type}`})
               } else {
               let link = await getBuffer(i.url)
-              bosco.sendMessage(from,link,image,{quoted: mek,caption: `Type : ${i.type}`})                  
+              pathumma.sendMessage(from,link,image,{quoted: mek,caption: `Type : ${i.type}`})                  
               }
               }
               });
@@ -2126,7 +2126,7 @@ break
       ratee = ["100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120"]
       const tee = ratee[Math.floor(Math.random() * ratee.length)]
       hemmo = fs.readFileSync(`mp3/100.mp3`)
-      bosco.sendMessage(from, hemmo, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek})
+      pathumma.sendMessage(from, hemmo, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek})
       break
       case 'readmore':
       case 'more':
@@ -2142,7 +2142,7 @@ break
                if (args.length < 1) return reply(`*Type ${prefix}lolkey [Apikey]*`) 
                anu = await fetchJson(`https://lolhuman.herokuapp.com/api/checkapikey?apikey=${q}`)
                teks = `*YOUR APIKEY*\n\n➸ Ussername= ${anu.result.username}\n➸ Request= ${anu.result.requests}\n➸ Today= ${anu.result.today}\n➸ Account Type= ${anu.result.account_type}\n➸ Expired= ${anu.result.expired}\n➸ API = https://lolhuman.herokuapp.com`
-               bosco.sendMessage(from, teks, text, {quoted: mek})
+               pathumma.sendMessage(from, teks, text, {quoted: mek})
                break
        case 'pinterest':
          case 'pin':
@@ -2150,11 +2150,11 @@ break
               data = await fetchJson(`https://lolhuman.herokuapp.com/api/pinterest?apikey=${lolkey}&query=${q}`)
               buttons = [{buttonId: `${prefix + command} ${q}`,buttonText:{displayText: `➡️Next`},type:1}]
               fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(data.result))
-              imageMsg = ( await bosco.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage', {thumbnail: Buffer.alloc(0)})).message.imageMessage
+              imageMsg = ( await pathumma.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage', {thumbnail: Buffer.alloc(0)})).message.imageMessage
               buttonsMessage = {footerText:'Hello Sis Can i help u..', imageMessage: imageMsg,
               contentText:`*Search Results From : ${q}*`,buttons,headerType:4}
-              prep = await bosco.prepareMessageFromContent(from,{buttonsMessage},{})
-              bosco.relayWAMessage(prep)
+              prep = await pathumma.prepareMessageFromContent(from,{buttonsMessage},{})
+              pathumma.relayWAMessage(prep)
               fs.unlinkSync(`./${sender}.jpeg`)
               break
        case 'yts':
@@ -2193,7 +2193,7 @@ a += `
                if ((isMedia && !mek.message.videoMessage || isQuotedImage || isQuotedVideo ) && args.length == 0) {
                reply(mess.wait)
                boij = isQuotedImage || isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-               owgi = await bosco.downloadMediaMessage(boij)
+               owgi = await pathumma.downloadMediaMessage(boij)
                res = await uploadImages(owgi)
                reply(res)
                } else {
@@ -2209,7 +2209,7 @@ a += `
               reply('Sending '+ ini_sticker.length +' stickers...')
               for (sticker_ in ini_sticker) {
               ini_buffer = await getBuffer(ini_sticker[sticker_])
-              bosco.sendMessage(from, ini_buffer, sticker, {})
+              pathumma.sendMessage(from, ini_buffer, sticker, {})
 }
               break
        case 'ghsearch': 
@@ -2256,11 +2256,11 @@ ${repo.open_issues} Issue${repo.description ? `
               result = `⚜️ *Nickname*: ${data.result.author.nickname}\n❤️ *Like*: ${data.result.statistic.diggCount}\n💬 *Comment*: ${data.result.statistic.commentCount}\n🔁 *Share*: ${data.result.statistic.shareCount}\n🎞️ *Views*: ${data.result.statistic.playCount}\n📑 *Desc*: ${data.result.title}`
               buttons = [{buttonId: `${prefix}buttons3 ${q}`,buttonText:{displayText: `▶️ Video`},type:1},{buttonId:`${prefix}buttons4 ${q}`,buttonText:{displayText:'🎵 Audio'},type:1}]
               fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(data.result.thumbnail))
-              imageMsg = ( await bosco.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage', {thumbnail: Buffer.alloc(0)})).message.imageMessage
+              imageMsg = ( await pathumma.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage', {thumbnail: Buffer.alloc(0)})).message.imageMessage
               buttonsMessage = {footerText:'Choose a format below', imageMessage: imageMsg,
               contentText:`${result}`,buttons,headerType:4}
-              prep = await bosco.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-              bosco.relayWAMessage(prep)
+              prep = await pathumma.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+              pathumma.relayWAMessage(prep)
               fs.unlinkSync(`./${sender}.jpeg`)
               break
       case 'ttnowm': 
@@ -2278,7 +2278,7 @@ ${repo.open_issues} Issue${repo.description ? `
              if (args.length == 0) return reply(`Example: ${prefix + command} https://vt.tiktok.com/ZSwWCk5o/`)
              ini_link = args[0]
              get_audio = await getBuffer(`https://api.lolhuman.xyz/api/tiktokmusic?apikey=${lolkey}&url=${ini_link}`)
-             bosco.sendMessage(from, get_audio, audio, { mimetype: Mimetype.mp4Audio, quoted: mek })
+             pathumma.sendMessage(from, get_audio, audio, { mimetype: Mimetype.mp4Audio, quoted: mek })
              break
       case 'google':
               if (!q) return reply(mess.wrongFormat)
@@ -2289,7 +2289,7 @@ ${repo.open_issues} Issue${repo.description ? `
               for (let i = 0; i < results.length; i++) {
               vars +=  `\n━━━━━━━━━━━━━━━━━\n\n*Title:* ${results[i].title}\n\n*Description:* ${results[i].snippet}\n\n*Link:* ${results[i].link}\n`
                }
-               bosco.sendMessage(from, ss, image, {caption: vars, quoted : mek, thumbnail: Buffer.alloc(0) })
+               pathumma.sendMessage(from, ss, image, {caption: vars, quoted : mek, thumbnail: Buffer.alloc(0) })
                }).catch(e => {
                console.log(e)
                reply(`${e}`)
@@ -2374,7 +2374,7 @@ teks += `*▢ Title : ${get_result[i].title}*
 `
 }
               ini_buffer = await getBuffer(get_result[0].thumb)
-              bosco.sendMessage(from, ini_buffer, image, { quoted: mek, caption: teks })
+              pathumma.sendMessage(from, ini_buffer, image, { quoted: mek, caption: teks })
               } catch {
               reply(`Sorry app ${query} not found`)
 }
@@ -2404,24 +2404,24 @@ teks += `*▢ Title : ${get_result[i].title}*
              if (!q.includes('tiktok')) return reply(mess.error.Iv)
              data = await fetchJson(`https://api.lolhuman.xyz/api/tiktok?apikey=${lolkey}&url=${q}`)
              ini_video = await getBuffer(data.result.link)
-             bosco.sendMessage(from, ini_video, video, { quoted: mek })
+             pathumma.sendMessage(from, ini_video, video, { quoted: mek })
              break
       case 'buttons4': 
              if (!q) return reply('*Where is the link?*')
              if (!q.includes('tiktok')) return reply(mess.error.Iv)
              data = await getBuffer(`https://api.lolhuman.xyz/api/tiktokmusic?apikey=${lolkey}&url=${args[0]}`)
-             bosco.sendMessage(from, data, audio, { quoted: mek })
+             pathumma.sendMessage(from, data, audio, { quoted: mek })
              break
       case 'alive':
-              bosco1 = await bosco.prepareMessage(from, denis, location, {thumbnail: denis})
-              bosco2 = bosco1.message["ephemeralMessage"] ? bosco1.message.ephemeralMessage : bosco1
-              groups = bosco.chats.array.filter(v => v.jid.endsWith('g.us'))
-              privat = bosco.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
+              pathumma1 = await pathumma.prepareMessage(from, denis, location, {thumbnail: denis})
+              pathumma2 = pathumma1.message["ephemeralMessage"] ? pathumma1.message.ephemeralMessage : pathumma1
+              groups = pathumma.chats.array.filter(v => v.jid.endsWith('g.us'))
+              privat = pathumma.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
               ram2 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
               charger = `${charging ? 'charging' : 'not charging'}`
               uptime = process.uptime();
               timestampe = speed();
-              totalChat = await bosco.chats.all()
+              totalChat = await pathumma.chats.all()
               latensie = speed() - timestampe
               total = math(`${groups.length}*${privat.length}`)
 teks = `
@@ -2431,31 +2431,31 @@ teks = `
 *Bᴀᴛᴛᴇʀʏ :* ${baterai}% ${charger}
 *Pʟᴀᴛғᴏʀᴍ :* ${os.platform()}
 *Uᴘᴛɪᴍᴇ :* ${runtime(process.uptime())}
-*Wᴀ ᴠᴇʀsɪᴏɴ :* ${bosco.user.phone.wa_version}
-*Os ᴠᴇʀsɪᴏɴ :* ${bosco.user.phone.os_version}
-*Dᴇᴠɪᴄᴇ Mᴀɴᴜғᴀᴄᴛᴜʀᴇ :* ${bosco.user.phone.device_manufacturer}
-*Dᴇᴠɪᴄᴇ Mᴏᴅᴇʟ :* ${bosco.user.phone.device_model}
+*Wᴀ ᴠᴇʀsɪᴏɴ :* ${pathumma.user.phone.wa_version}
+*Os ᴠᴇʀsɪᴏɴ :* ${pathumma.user.phone.os_version}
+*Dᴇᴠɪᴄᴇ Mᴀɴᴜғᴀᴄᴛᴜʀᴇ :* ${pathumma.user.phone.device_manufacturer}
+*Dᴇᴠɪᴄᴇ Mᴏᴅᴇʟ :* ${pathumma.user.phone.device_model}
 `
     menubutton = [{buttonId:`${prefix}credits`,buttonText:{displayText:'CREDITS'},type:1}
 ]
- menumessage = { contentText: `${teks}`, footerText: `Sᴜʙsᴄʀɪʙᴇ Yᴛ Pᴇᴘᴇ Sɪʀ`, buttons: menubutton, headerType: 6, locationMessage: bosco2.message.locationMessage}
- bosco.sendMessage(from, menumessage, MessageType.buttonsMessage)
+ menumessage = { contentText: `${teks}`, footerText: `Sᴜʙsᴄʀɪʙᴇ Yᴛ Pᴇᴘᴇ Sɪʀ`, buttons: menubutton, headerType: 6, locationMessage: pathumma2.message.locationMessage}
+ pathumma.sendMessage(from, menumessage, MessageType.buttonsMessage)
              break  
       case 'buttons5':
               const mathdare = dare[Math.floor(Math.random() * (dare.length))]
               result = `${mathdare}`
               buttons = [{buttonId: `${prefix}buttons6`,buttonText:{displayText: 'Truth'},type:1},{buttonId:`${prefix}buttons5`,buttonText:{displayText:'Dare'},type:1},{buttonId:`${prefix}tod`,buttonText:{displayText:'Tod'},type:1}]
               buttonsMessage = { contentText: `${result}`, footerText: 'Truth or challenge?', buttons: buttons, headerType: 1 }
-              prep = await bosco.prepareMessageFromContent(from,{buttonsMessage},{})
-              bosco.relayWAMessage(prep)
+              prep = await pathumma.prepareMessageFromContent(from,{buttonsMessage},{})
+              pathumma.relayWAMessage(prep)
               break
       case 'buttons6':
               const randomtruth = truth[Math.floor(Math.random() * truth.length)]
               result = `${randomtruth}`
               buttons = [{buttonId: `${prefix}buttons6`,buttonText:{displayText: 'Truth'},type:1},{buttonId:`${prefix}buttons5`,buttonText:{displayText:'Dare'},type:1},{buttonId:`${prefix}tod`,buttonText:{displayText:'Tod'},type:1}]
               buttonsMessage = { contentText: `${result}`, footerText: 'Truth or challenge?', buttons: buttons, headerType: 1 }
-              prep = await bosco.prepareMessageFromContent(from,{buttonsMessage},{})
-              bosco.relayWAMessage(prep)
+              prep = await pathumma.prepareMessageFromContent(from,{buttonsMessage},{})
+              pathumma.relayWAMessage(prep)
               break
        
          case 'antilink':
@@ -2515,7 +2515,7 @@ teks = `
         case 'ocr': 
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 			        const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-				    const media = await bosco.downloadAndSaveMediaMessage(encmedia)
+				    const media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 					reply(mess.wait)
 					await recognize(media, {lang: 'eng+ind', oem: 1, psm: 3})
 					.then(teks => {
@@ -2534,19 +2534,19 @@ teks = `
               result =`*Truth Or Dare*\nPlayers are given the choice between answering questions honestly, or taking on the challenge given`
               buttons = [{buttonId: `${prefix}buttons6`,buttonText:{displayText: 'Truth'},type:1},{buttonId:`${prefix}buttons5`,buttonText:{displayText:'Dare'},type:1},{buttonId:`${prefix}tod`,buttonText:{displayText:'Tod'},type:1}]
               buttonsMessage = { contentText: `${result}`, footerText: 'Truth or challenge?', buttons: buttons, headerType: 1 }
-              prep = await bosco.prepareMessageFromContent(from,{buttonsMessage},{})
-              bosco.relayWAMessage(prep)
+              prep = await pathumma.prepareMessageFromContent(from,{buttonsMessage},{})
+              pathumma.relayWAMessage(prep)
               break
         case 'anime':
               let wipu = (await axios.get(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/${command}.json`)).data
               let wipi = wipu[Math.floor(Math.random() * (wipu.length))]
               fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(wipi))
 		      buttons = [{buttonId: `${prefix + command}`,buttonText:{displayText: `next`},type:1},{buttonId:`${prefix}owner`,buttonText:{displayText:'owner'},type:1}]
-              imageMsg = ( await bosco.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage', {thumbnail: Buffer.alloc(0)})).message.imageMessage
+              imageMsg = ( await pathumma.prepareMessage(from, fs.readFileSync(`./${sender}.jpeg`), 'imageMessage', {thumbnail: Buffer.alloc(0)})).message.imageMessage
               buttonsMessage = {footerText:'© 𝒎𝒂𝒅𝒆 𝒃𝒚 𝒑𝒆𝒑𝒆', imageMessage: imageMsg,
               contentText:`_Click Next to go to the next picture_`,buttons,headerType:4}
-              prep = await bosco.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-              bosco.relayWAMessage(prep)
+              prep = await pathumma.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+              pathumma.relayWAMessage(prep)
               fs.unlinkSync(`./${sender}.jpeg`)
               break
         case 'song':
@@ -2592,9 +2592,9 @@ teks = `
 			if (!isGroup) return reply(`*Send Only Group*`)
             if ((isMedia && !mek.message.videoMessage || isQuotedSticker) && args.length == 0) {
             encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-            file = await bosco.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            file = await pathumma.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
             value = args.join(" ")
-            var group = await bosco.groupMetadata(from)
+            var group = await pathumma.groupMetadata(from)
             var member = group['participants']
             var mem = []
             member.map(async adm => {
@@ -2605,13 +2605,13 @@ teks = `
                 quoted: mek
             }
             ini_buffer = fs.readFileSync(file)
-            bosco.sendMessage(from, ini_buffer, sticker, options)
+            pathumma.sendMessage(from, ini_buffer, sticker, options)
             fs.unlinkSync(file)
             } else if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
             encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-            file = await bosco.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            file = await pathumma.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
             value = args.join(" ")
-            var group = await bosco.groupMetadata(from)
+            var group = await pathumma.groupMetadata(from)
             var member = group['participants']
             var mem = []
             member.map(async adm => {
@@ -2622,13 +2622,13 @@ teks = `
                 quoted: mek
             }
             ini_buffer = fs.readFileSync(file)
-            bosco.sendMessage(from, ini_buffer, image, options)
+            pathumma.sendMessage(from, ini_buffer, image, options)
             fs.unlinkSync(file)
         } else if ((isMedia && !mek.message.videoMessage || isQuotedAudio) && args.length == 0) {
             encmedia = isQuotedAudio ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-            file = await bosco.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            file = await pathumma.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
             value = args.join(" ")
-            var group = await bosco.groupMetadata(from)
+            var group = await pathumma.groupMetadata(from)
             var member = group['participants']
             var mem = []
             member.map(async adm => {
@@ -2641,13 +2641,13 @@ teks = `
                 quoted: mek
             }
             ini_buffer = fs.readFileSync(file)
-            bosco.sendMessage(from, ini_buffer, audio, options)
+            pathumma.sendMessage(from, ini_buffer, audio, options)
             fs.unlinkSync(file)
          } else if ((isMedia && !mek.message.videoMessage || isQuotedVideo) && args.length == 0) {
             encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-            file = await bosco.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            file = await pathumma.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
             value = args.join(" ")
-            var group = await bosco.groupMetadata(from)
+            var group = await pathumma.groupMetadata(from)
             var member = group['participants']
             var mem = []
             member.map(async adm => {
@@ -2659,13 +2659,13 @@ teks = `
                 quoted: mek
             }
             ini_buffer = fs.readFileSync(file)
-            bosco.sendMessage(from, ini_buffer, video, options)
+            pathumma.sendMessage(from, ini_buffer, video, options)
             fs.unlinkSync(file)
         } else if ((isMedia && !mek.message.videoMessage || isQuotedDocument) && args.length == 0) {
             encmedia = isQuotedDocument ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-            file = await bosco.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            file = await pathumma.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
             value = args.join(" ")
-            var group = await bosco.groupMetadata(from)
+            var group = await pathumma.groupMetadata(from)
             var member = group['participants']
             var mem = []
             member.map(async adm => {
@@ -2677,13 +2677,13 @@ teks = `
                 quoted: mek
             }
             ini_buffer = fs.readFileSync(file)
-            bosco.sendMessage(from, ini_buffer, document, options)
+            pathumma.sendMessage(from, ini_buffer, document, options)
             fs.unlinkSync(file)
         }  else if ((isMedia && !mek.message.videoMessage || isQuotedVideo) && args.length == 0) {
             encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-            file = await bosco.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            file = await pathumma.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
             value = args.join(" ")
-            var group = await bosco.groupMetadata(from)
+            var group = await pathumma.groupMetadata(from)
             var member = group['participants']
             var mem = []
             member.map(async adm => {
@@ -2695,7 +2695,7 @@ teks = `
                 quoted: mek
             }
             ini_buffer = fs.readFileSync(file)
-            bosco.sendMessage(from, ini_buffer, video, options)
+            pathumma.sendMessage(from, ini_buffer, video, options)
             fs.unlinkSync(file)
         } else{
           reply(`*Reply to Gif/Document/Audio/Video/Sticker Send Caption With ${prefix}totag*`)
@@ -2703,43 +2703,43 @@ teks = `
         break
          case 'forward':
            if (!isOwner) return reply(mess.only.owner)
-	        bosco.sendMessage(from, `${body.slice(8)}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync('./ds.jpg', 'base64'), contextInfo: { forwardingScore: 2, isForwarded: true }})
+	        pathumma.sendMessage(from, `${body.slice(8)}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync('./ds.jpg', 'base64'), contextInfo: { forwardingScore: 2, isForwarded: true }})
             break
 		   case 'forwardaudio':                 
 	                encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo	
-                 	media = await bosco.downloadAndSaveMediaMessage(encmedia)
+                 	media = await pathumma.downloadAndSaveMediaMessage(encmedia)
 	                	ran = getRandom('.mp3')
 	                	exec(`ffmpeg -i ${media}  ${ran}`, (err, stderr, stdout) => {
 	                	fs.unlinkSync(media)
 	                	if (err) return reply('Error!')
 		                hah = fs.readFileSync(ran)
-	                	bosco.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek, sendEphemeral: true, contextInfo: { forwardingScore: 508, isForwarded: true }})
+	                	pathumma.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek, sendEphemeral: true, contextInfo: { forwardingScore: 508, isForwarded: true }})
 	                	fs.unlinkSync(ran)
    	                 })
    	                	break
 
             case 'forwardvideo':
             encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-            media = await bosco.downloadAndSaveMediaMessage(encmedia)
+            media = await pathumma.downloadAndSaveMediaMessage(encmedia)
             ran = getRandom('.mp4')
             exec(`ffmpeg -i ${media}  ${ran}`, (err) => {
             fs.unlinkSync(media)
             if (err) return reply('Error!')
             buffer453 = fs.readFileSync(ran)
-            bosco.sendMessage(from, buffer453, video, {mimetype: 'video/mp4', quoted: mek, sendEphemeral: true, contextInfo: { forwardingScore: 508, isForwarded: true }})
+            pathumma.sendMessage(from, buffer453, video, {mimetype: 'video/mp4', quoted: mek, sendEphemeral: true, contextInfo: { forwardingScore: 508, isForwarded: true }})
             fs.unlinkSync(ran)
             })
             break
           case 'fw':
-bosco.sendMessage(from, `${args.join(' ')}`, MessageType.text, {contextInfo: { forwardingScore: 210, isForwarded: true }})
+pathumma.sendMessage(from, `${args.join(' ')}`, MessageType.text, {contextInfo: { forwardingScore: 210, isForwarded: true }})
             break
 
 //------------------< Sticker Maker >-------------------
 
 case 'attp':
-              if (args.length == 0) return reply(`Example: ${prefix + command} bosco`)
+              if (args.length == 0) return reply(`Example: ${prefix + command} pathumma`)
               buffer = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURI(q)}`)
-              bosco.sendMessage(from, buffer, sticker, { quoted: mek })
+              pathumma.sendMessage(from, buffer, sticker, { quoted: mek })
               break
        case 'sticker':
        case 'stiker':
@@ -2750,27 +2750,27 @@ case 'attp':
               if (isAuto) return
               if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
               encmediat = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-              mediat = await bosco.downloadAndSaveMediaMessage(encmediat)
+              mediat = await pathumma.downloadAndSaveMediaMessage(encmediat)
               ron = getRandom('.webp')
               exec(`ffmpeg -i ${mediat} -vf "scale=512:512:force_original_aspect_ratio=increase,fps=15, crop=512:512" ${ron}`, (err) => {
               fs.unlinkSync(mediat)
               if (err) return reply(`${err}`)
               exec(`webpmux -set exif ${addMetadata('Denis')} ${ron} -o ${ron}`, async (error) => {
               if (error) return reply(`${error}`)
-              bosco.sendMessage(from, fs.readFileSync(ron), sticker, {quoted:mek})
+              pathumma.sendMessage(from, fs.readFileSync(ron), sticker, {quoted:mek})
               fs.unlinkSync(ron)
 })
 })
               } else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
               encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-              mediat = await bosco.downloadAndSaveMediaMessage(encmedia)
+              mediat = await pathumma.downloadAndSaveMediaMessage(encmedia)
               ron = getRandom('.webp')
               exec(`ffmpeg -i ${mediat} -vf "scale=512:512:force_original_aspect_ratio=increase,fps=15, crop=512:512" ${ron}`, (err) => {
               fs.unlinkSync(mediat)
               if (err) return reply(`${err}`)
               exec(`webpmux -set exif ${addMetadata('Denis')} ${ron} -o ${ron}`, async (error) => {
               if (error) return reply(`${error}`)
-              bosco.sendMessage(from, fs.readFileSync(ron), sticker, {quoted:mek})
+              pathumma.sendMessage(from, fs.readFileSync(ron), sticker, {quoted:mek})
               fs.unlinkSync(ron)
 })
 })
@@ -2797,11 +2797,11 @@ case 'emoji':
 					nm = body.slice(7)
 					if (!nm) return reply('*What is The bgm name?*')
 					boij = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-					delb = await bosco.downloadMediaMessage(boij)
+					delb = await pathumma.downloadMediaMessage(boij)
 					vien.push(`${nm}`)
 					fs.writeFileSync(`./media/vn/${nm}.mp3`, delb)
 					fs.writeFileSync('./database/vien.json', JSON.stringify(vien))
-					bosco.sendMessage(from, `*Bgm Added*`, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: 'status@broadcast' } : {})}, message: { orderMessage: { itemCount: 333, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `${nm}`, orderTitle: 'hehe', sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 508, isForwarded: true}})
+					pathumma.sendMessage(from, `*Bgm Added*`, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: 'status@broadcast' } : {})}, message: { orderMessage: { itemCount: 333, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: `${nm}`, orderTitle: 'hehe', sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 508, isForwarded: true}})
 					break
 	 case 'delvn':
 					try {
@@ -2809,7 +2809,7 @@ case 'emoji':
 					 wanu = vien.indexOf(nmm)
 					 vien.splice(wanu, 1)
 					 fs.unlinkSync(`./media/vn/${nmm}.mp3`)
-					bosco.sendMessage(from, `*Bgm Deleted*`, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: 'status@broadcast' } : {})}, message: { orderMessage: { itemCount: 59, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: '𝒑𝒆𝒑𝒆', orderTitle: '𝒔𝒆𝒓', sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 508, isForwarded: true}})
+					pathumma.sendMessage(from, `*Bgm Deleted*`, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: 'status@broadcast' } : {})}, message: { orderMessage: { itemCount: 59, status: 200, thumbnail: fs.readFileSync('./ds.jpg'), surface: 200, message: '𝒑𝒆𝒑𝒆', orderTitle: '𝒔𝒆𝒓', sellerJid: '0@s.whatsapp.net'}}}, contextInfo: { forwardingScore: 508, isForwarded: true}})
 					} catch (err){
 						console.log(err)
 						reply(mess.error.api)
@@ -2823,7 +2823,7 @@ case 'emoji':
 						teks += `- ${awokwkwk}\n`
 					}
 					teks += `\n*Tᴏᴛᴀʟ : ${vien.length}*\n\n_🍁_`
-					bosco.sendMessage(from, teks.trim(), extendedText, { caption: 'teks', "contextInfo": { text: 'teks', sendEphemeral: true, "externalAdReply": { "title": `${' '}𝒑𝒆𝒑𝒆 𝒔𝒆𝒓${''}${''}`, "body": ``, "previewType": 'PHOTO', "thumbnailUrl": `${'https://i.ibb.co/vkkcm0L/034c588fd8d5.jpg'}`, "thumbnail": '', "sourceUrl": `${'https://wa.me/c/919633687665'}`}},quoted: ftext})
+					pathumma.sendMessage(from, teks.trim(), extendedText, { caption: 'teks', "contextInfo": { text: 'teks', sendEphemeral: true, "externalAdReply": { "title": `${' '}𝒑𝒆𝒑𝒆 𝒔𝒆𝒓${''}${''}`, "body": ``, "previewType": 'PHOTO', "thumbnailUrl": `${'https://i.ibb.co/vkkcm0L/034c588fd8d5.jpg'}`, "thumbnail": '', "sourceUrl": `${'https://wa.me/c/919633687665'}`}},quoted: ftext})
 					break
 				case 'addimage':
 				    if (!isOwner) return
@@ -2831,11 +2831,11 @@ case 'emoji':
 					nm = body.slice(10)
 					if (!nm) return reply('*Whats the name of the image?*')
 					boij = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-					delb = await bosco.downloadMediaMessage(boij)
+					delb = await pathumma.downloadMediaMessage(boij)
 					imagi.push(`${nm}`)
 					fs.writeFileSync(`./media/image/${nm}.jpg`, delb)
 					fs.writeFileSync('./database/imagi.json', JSON.stringify(imagi))
-					bosco.sendMessage(from, `*Image Added*`, MessageType.text, { quoted: mek })
+					pathumma.sendMessage(from, `*Image Added*`, MessageType.text, { quoted: mek })
 					break
 				case 'delimage':
 					try {
@@ -2856,7 +2856,7 @@ case 'emoji':
 						teks += `- ${awokwkwk}\n`
 					}
 					teks += `\n*Total : ${imagi.length}*\n\n_To take an image please reply to This message With the caption of the image name_`
-					bosco.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": imagi } })
+					pathumma.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": imagi } })
 					break
               case 'addsticker':
                     if (!isOwner) return
@@ -2864,11 +2864,11 @@ case 'emoji':
 					nm = body.slice(12)
 					if (!nm) return reply('*Sticker Name?*')
 					boij = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-					delb = await bosco.downloadMediaMessage(boij)
+					delb = await pathumma.downloadMediaMessage(boij)
 					setik.push(`${nm}`)
 					fs.writeFileSync(`./media/sticker/${nm}.webp`, delb)
 					fs.writeFileSync('./database/setik.json', JSON.stringify(setik))
-					bosco.sendMessage(from, `*Sticker Added*`, MessageType.text, { quoted: mek })
+					pathumma.sendMessage(from, `*Sticker Added*`, MessageType.text, { quoted: mek })
 					break
 				case 'delsticker':
 					try {
@@ -2889,7 +2889,7 @@ case 'emoji':
 						teks += `- ${awokwkwk}\n`
 					}
 					teks += `\n*Total : ${imagi.length}*\n\n_Type Any Image_`
-					bosco.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": imagi } })
+					pathumma.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": imagi } })
 					break
         
 //------------------< Tag >-------------------
@@ -2898,7 +2898,7 @@ case 'emoji':
 			if (args.length < 1) return reply(`Consumption ${prefix}tag 60xxxx`)
             var nomqm = `${body.slice(5)}@s.whatsapp.net`
 					tagq = `@${nomqm.split('@')[0]}` 
-					bosco.sendMessage(from, tagq, text, { quoted: ftroli, contextInfo: { forwardingScore: 508, isForwarded: true, mentionedJid: [nomqm]}})
+					pathumma.sendMessage(from, tagq, text, { quoted: ftroli, contextInfo: { forwardingScore: 508, isForwarded: true, mentionedJid: [nomqm]}})
 			break
 
 //------------------< Bot Info >-------------------
@@ -2936,41 +2936,41 @@ case 'emoji':
 //------------------< Group >-------------------
         
        case 'block':
-				 bosco.updatePresence(from, Presence.composing) 
-				 bosco.chatRead (from)
+				 pathumma.updatePresence(from, Presence.composing) 
+				 pathumma.chatRead (from)
 					if (!isGroup) return reply(mess.group())
 					if (!isOwner) return reply(mess.owner)
-					bosco.blockUser (`${body.slice(7)}@c.us`, "add")
-					bosco.sendMessage(from, `*ʙʟᴏᴄᴋᴇᴅ* ${body.slice(7)}@c.us`, text)
+					pathumma.blockUser (`${body.slice(7)}@c.us`, "add")
+					pathumma.sendMessage(from, `*ʙʟᴏᴄᴋᴇᴅ* ${body.slice(7)}@c.us`, text)
 					break
 		case 'unblock':
 					if (!isGroup) return reply(mess.group)
 					if (!isOwner) return reply(mess.owner)
-				    bosco.blockUser (`${body.slice(9)}@c.us`, "remove")
-					bosco.sendMessage(from, `*ᴜɴʙʟᴏᴄᴋᴇᴅ* ${body.slice(9)}@c.us`, text)
+				    pathumma.blockUser (`${body.slice(9)}@c.us`, "remove")
+					pathumma.sendMessage(from, `*ᴜɴʙʟᴏᴄᴋᴇᴅ* ${body.slice(9)}@c.us`, text)
 					break
          case 'getpic':
 					if (!isGroup) return reply(mess.only.group)
             mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
-            pictt = await bosco.getProfilePicture(mentioned)
+            pictt = await pathumma.getProfilePicture(mentioned)
             pict = await getBuffer(pictt)
-            bosco.sendMessage(from, pict, image, {quoted: mek})
+            pathumma.sendMessage(from, pict, image, {quoted: mek})
             break
         case 'getpp':
                if (mek.message.extendedTextMessage === null || mek.message.extendedTextMessage === undefined) {
-               linkpp = await bosco.getProfilePicture(from) || "https://telegra.ph/file/40151a65238ba2643152d.jpg"
+               linkpp = await pathumma.getProfilePicture(from) || "https://telegra.ph/file/40151a65238ba2643152d.jpg"
                buffer = await getBuffer(linkpp)
-               bosco.sendMessage(from, buffer, image, {caption: "Nih", quoted: mek })
+               pathumma.sendMessage(from, buffer, image, {caption: "Nih", quoted: mek })
                } else if (mek.message.extendedTextMessage.contextInfo.mentionedJid === null || mek.message.extendedTextMessage.contextInfo.mentionedJid === undefined) {
                mberr = mek.message.extendedTextMessage.contextInfo.participant
-               linkpp = await bosco.getProfilePicture(mberr) || "https://telegra.ph/file/40151a65238ba2643152d.jpg"
+               linkpp = await pathumma.getProfilePicture(mberr) || "https://telegra.ph/file/40151a65238ba2643152d.jpg"
                buffer = await getBuffer(linkpp)
-               bosco.sendMessage(from, buffer, image, { quoted: mek, caption: `Profile Picture of @${mberr.split("@")[0]}`, contextInfo: { "mentionedJid": [mberr] }})
+               pathumma.sendMessage(from, buffer, image, { quoted: mek, caption: `Profile Picture of @${mberr.split("@")[0]}`, contextInfo: { "mentionedJid": [mberr] }})
                } else if (mek.message.extendedTextMessage.contextInfo.mentionedJid.length > 0) {
                mberr = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
-               linkpp = await bosco.getProfilePicture(mberr) || "https://telegra.ph/file/40151a65238ba2643152d.jpg"
+               linkpp = await pathumma.getProfilePicture(mberr) || "https://telegra.ph/file/40151a65238ba2643152d.jpg"
                buffer = await getBuffer(linkpp)
-               bosco.sendMessage(from, buffer, image, { quoted: mek, caption: `Profile Picture of @${mberr.split("@")[0]}`, contextInfo: { "mentionedJid": [mberr] }})
+               pathumma.sendMessage(from, buffer, image, { quoted: mek, caption: `Profile Picture of @${mberr.split("@")[0]}`, contextInfo: { "mentionedJid": [mberr] }})
 }
                break
           case 'get':
@@ -3003,12 +3003,12 @@ case 'emoji':
                batas = parseInt(sampai) + 1
                if (batas > 30) return reply('*Max 30!*')
                reply(mess.wait)
-               cok = await bosco.searchMessages(`${ve}`, from, batas,1) 
+               cok = await pathumma.searchMessages(`${ve}`, from, batas,1) 
                if (cok.messages.length < 2) return reply('*Message Not Found*') 
                if (cok.messages.length < parseInt(batas)) reply(`*Found Only* ${cok.messages.length - 1} *Message*`)
                for (i=1;i < cok.messages.length;i++) {
                if (cok.messages[i].message) {
-               bosco.sendMessage(from, `*Found!*`, text, {sendEphemeral: true, quoted: cok.messages[i]}) 
+               pathumma.sendMessage(from, `*Found!*`, text, {sendEphemeral: true, quoted: cok.messages[i]}) 
 }
 }
                } catch (e) {
@@ -3057,7 +3057,7 @@ case 'emoji':
                     if (args.length == 0) return reply(`Example: ${prefix + command} Denis hehe`)
                     ini_txt = args.join(" ")
                     ini_buffer = await getBuffer(`http://api.lolhuman.xyz/api/textprome/${command}?apikey=${lolkey}&text=${ini_txt}`)
-                    bosco.sendMessage(from, ini_buffer, image, { quoted: ftroli})
+                    pathumma.sendMessage(from, ini_buffer, image, { quoted: ftroli})
                     break
                 case 'pornhub':
                 case 'glitch':
@@ -3077,7 +3077,7 @@ case 'emoji':
                     txt1 = args[0]
                     txt2 = args[1]
                     ini_buffer = await getBuffer(`http://api.lolhuman.xyz/api/textprome2/${command}?apikey=${lolkey}&text1=${txt1}&text2=${txt2}`)
-                    bosco.sendMessage(from, ini_buffer, image, { quoted: ftroli})
+                    pathumma.sendMessage(from, ini_buffer, image, { quoted: ftroli})
                     break
 
                     // Photo Oxy //
@@ -3108,7 +3108,7 @@ case 'emoji':
                     if (args.length == 0) return reply(`Example: ${prefix + command} Denis hehe`)
                     ini_txt = args.join(" ")
                     ini_buffer = await getBuffer(`http://api.lolhuman.xyz/api/photooxy1/${command}?apikey=${lolkey}&text=${ini_txt}`)
-                    bosco.sendMessage(from, ini_buffer, image, { quoted: ftext})
+                    pathumma.sendMessage(from, ini_buffer, image, { quoted: ftext})
                     break
                 case 'tiktok':
                 case 'arcade8bit':
@@ -3121,7 +3121,7 @@ case 'emoji':
                     txt1 = args[0]
                     txt2 = args[1]
                     ini_buffer = await getBuffer(`http://api.lolhuman.xyz/api/photooxy2/${command}?apikey=${lolkey}&text1=${txt1}&text2=${txt2}`)
-                    bosco.sendMessage(from, ini_buffer, image, { quoted: fgc})
+                    pathumma.sendMessage(from, ini_buffer, image, { quoted: fgc})
                     break
 
                     // Ephoto 360 //
@@ -3158,12 +3158,12 @@ case 'emoji':
                     if (args.length == 0) return reply(`Example: ${prefix + command} Denis hehe`)
                     ini_txt = args.join(" ")
                     ini_buffer = await getBuffer(`http://api.lolhuman.xyz/api/ephoto1/${command}?apikey=${lolkey}&text=${ini_txt}`)
-                    bosco.sendMessage(from, ini_buffer, image, { quoted: fgif})
+                    pathumma.sendMessage(from, ini_buffer, image, { quoted: fgif})
                     break
                  case 'sc':
                  case 'git':
 		case 'sourcecode':
-		function _0x1f50(_0x209a2e,_0x5079f5){var _0x1133bc=_0x44d2();return _0x1f50=function(_0x55ee06,_0x26680f){_0x55ee06=_0x55ee06-0x152;var _0x44d270=_0x1133bc[_0x55ee06];return _0x44d270;},_0x1f50(_0x209a2e,_0x5079f5);}var _0x2c057a=_0x1f50;function _0x44d2(){var _0x387e95=['hehe','5000bVYgeV','apply','4153655twAYRV','▢\x20Sᴜʙsᴄʀɪʙᴇ\x20Yᴛ\x20Pᴇᴘᴇ\x20Sɪʀ\x20▢','24CnBiap','split','toString','130QHbvJQ','search','ephemeralMessage','(((.+)+)+)+$','constructor','buttonsMessage','74744xOoftI','message','55002dqgfBH','prepareMessage','1847619gLtKAp','26345196LKPCHx','locationMessage','315jrFkZq','126mIOGQg','200427wIpjqE','10ujPZBD'];_0x44d2=function(){return _0x387e95;};return _0x44d2();}(function(_0x4617b3,_0xd7a238){var _0xc75b39=_0x1f50,_0x560992=_0x4617b3();while(!![]){try{var _0x1eea72=-parseInt(_0xc75b39(0x15b))/0x1*(parseInt(_0xc75b39(0x15f))/0x2)+-parseInt(_0xc75b39(0x15c))/0x3*(parseInt(_0xc75b39(0x163))/0x4)+parseInt(_0xc75b39(0x166))/0x5*(-parseInt(_0xc75b39(0x155))/0x6)+-parseInt(_0xc75b39(0x15a))/0x7*(parseInt(_0xc75b39(0x153))/0x8)+-parseInt(_0xc75b39(0x157))/0x9+-parseInt(_0xc75b39(0x15d))/0xa*(parseInt(_0xc75b39(0x161))/0xb)+parseInt(_0xc75b39(0x158))/0xc;if(_0x1eea72===_0xd7a238)break;else _0x560992['push'](_0x560992['shift']());}catch(_0x38e5cc){_0x560992['push'](_0x560992['shift']());}}}(_0x44d2,0x3a152));var _0x26680f=function(){var _0x1948f5=!![];return function(_0x1cdee3,_0x33a6ab){var _0x5361d5=_0x1948f5?function(){var _0x7c79c6=_0x1f50;if(_0x33a6ab){var _0x447793=_0x33a6ab[_0x7c79c6(0x160)](_0x1cdee3,arguments);return _0x33a6ab=null,_0x447793;}}:function(){};return _0x1948f5=![],_0x5361d5;};}(),_0x55ee06=_0x26680f(this,function(){var _0x19c139=_0x1f50;return _0x55ee06[_0x19c139(0x165)]()[_0x19c139(0x167)](_0x19c139(0x169))[_0x19c139(0x165)]()[_0x19c139(0x16a)](_0x55ee06)[_0x19c139(0x167)](_0x19c139(0x169));});_0x55ee06(),sc1=await bosco[_0x2c057a(0x156)](from,dfrply,location,{'thumbnail':dfrply}),sc2=sc1[_0x2c057a(0x154)][_0x2c057a(0x168)]?sc1['message']['ephemeralMessage']:sc1,sc='\x20Hɪ\x20Bʀᴏ\x20@'+sender[_0x2c057a(0x164)]('@')[0x0]+'Bᴏᴛ\x20Sᴄʀɪᴘᴛ\x20Wɪʟʟ\x20Bᴇ\x20Aᴠᴀɪʟᴀʙʟᴇ\x20Oɴ\x20👇\x0a\x0a\x22https://youtube.com/channel/UCVJ9029PQ-gJBtFQZZ3AJuA\x22\x0a\x0a\x0a\x0a\x22https://github.com/pepesir/Bosco\x22\x0a\x0a',scbutton=[{'buttonId':prefix+'alive','buttonText':{'displayText':'🙌'},'type':0x1}],scmessage={'contentText':''+sc,'footerText':_0x2c057a(0x162),'buttons':scbutton,'headerType':0x6,'locationMessage':sc2['message'][_0x2c057a(0x159)]},bosco['sendMessage'](from,scmessage,MessageType[_0x2c057a(0x152)],{'caption':_0x2c057a(0x15e),'contextInfo':{'mentionedJid':[sender]}});
+		function _0x1f50(_0x209a2e,_0x5079f5){var _0x1133bc=_0x44d2();return _0x1f50=function(_0x55ee06,_0x26680f){_0x55ee06=_0x55ee06-0x152;var _0x44d270=_0x1133bc[_0x55ee06];return _0x44d270;},_0x1f50(_0x209a2e,_0x5079f5);}var _0x2c057a=_0x1f50;function _0x44d2(){var _0x387e95=['hehe','5000bVYgeV','apply','4153655twAYRV','▢\x20Sᴜʙsᴄʀɪʙᴇ\x20Yᴛ\x20Pᴇᴘᴇ\x20Sɪʀ\x20▢','24CnBiap','split','toString','130QHbvJQ','search','ephemeralMessage','(((.+)+)+)+$','constructor','buttonsMessage','74744xOoftI','message','55002dqgfBH','prepareMessage','1847619gLtKAp','26345196LKPCHx','locationMessage','315jrFkZq','126mIOGQg','200427wIpjqE','10ujPZBD'];_0x44d2=function(){return _0x387e95;};return _0x44d2();}(function(_0x4617b3,_0xd7a238){var _0xc75b39=_0x1f50,_0x560992=_0x4617b3();while(!![]){try{var _0x1eea72=-parseInt(_0xc75b39(0x15b))/0x1*(parseInt(_0xc75b39(0x15f))/0x2)+-parseInt(_0xc75b39(0x15c))/0x3*(parseInt(_0xc75b39(0x163))/0x4)+parseInt(_0xc75b39(0x166))/0x5*(-parseInt(_0xc75b39(0x155))/0x6)+-parseInt(_0xc75b39(0x15a))/0x7*(parseInt(_0xc75b39(0x153))/0x8)+-parseInt(_0xc75b39(0x157))/0x9+-parseInt(_0xc75b39(0x15d))/0xa*(parseInt(_0xc75b39(0x161))/0xb)+parseInt(_0xc75b39(0x158))/0xc;if(_0x1eea72===_0xd7a238)break;else _0x560992['push'](_0x560992['shift']());}catch(_0x38e5cc){_0x560992['push'](_0x560992['shift']());}}}(_0x44d2,0x3a152));var _0x26680f=function(){var _0x1948f5=!![];return function(_0x1cdee3,_0x33a6ab){var _0x5361d5=_0x1948f5?function(){var _0x7c79c6=_0x1f50;if(_0x33a6ab){var _0x447793=_0x33a6ab[_0x7c79c6(0x160)](_0x1cdee3,arguments);return _0x33a6ab=null,_0x447793;}}:function(){};return _0x1948f5=![],_0x5361d5;};}(),_0x55ee06=_0x26680f(this,function(){var _0x19c139=_0x1f50;return _0x55ee06[_0x19c139(0x165)]()[_0x19c139(0x167)](_0x19c139(0x169))[_0x19c139(0x165)]()[_0x19c139(0x16a)](_0x55ee06)[_0x19c139(0x167)](_0x19c139(0x169));});_0x55ee06(),sc1=await pathumma[_0x2c057a(0x156)](from,dfrply,location,{'thumbnail':dfrply}),sc2=sc1[_0x2c057a(0x154)][_0x2c057a(0x168)]?sc1['message']['ephemeralMessage']:sc1,sc='\x20Hɪ\x20Bʀᴏ\x20@'+sender[_0x2c057a(0x164)]('@')[0x0]+'Bᴏᴛ\x20Sᴄʀɪᴘᴛ\x20Wɪʟʟ\x20Bᴇ\x20Aᴠᴀɪʟᴀʙʟᴇ\x20Oɴ\x20👇\x0a\x0a\x22https://youtube.com/channel/UCVJ9029PQ-gJBtFQZZ3AJuA\x22\x0a\x0a\x0a\x0a\x22https://github.com/VKsir/pathumma\x22\x0a\x0a',scbutton=[{'buttonId':prefix+'alive','buttonText':{'displayText':'🙌'},'type':0x1}],scmessage={'contentText':''+sc,'footerText':_0x2c057a(0x162),'buttons':scbutton,'headerType':0x6,'locationMessage':sc2['message'][_0x2c057a(0x159)]},pathumma['sendMessage'](from,scmessage,MessageType[_0x2c057a(0x152)],{'caption':_0x2c057a(0x15e),'contextInfo':{'mentionedJid':[sender]}});
 		break
         case 'isbaileys': 
 case 'bail': 
@@ -3179,13 +3179,13 @@ reply(`${mek.quoted.caption}`)
 break
 case 'q': 
 if (!m.quoted) return reply('reply message!')
-let qse = bosco.serializeM(await m.getQuotedObj())
+let qse = pathumma.serializeM(await m.getQuotedObj())
 if (!qse.quoted) return reply('the message you replied does not contain a reply!')
 await qse.quoted.copyNForward(m.chat, true)
 break
      case 'groplist':
                 case 'grouplist':
-  const txs = bosco.chats.all().filter(v => v.jid.endsWith('g.us')).map(v =>`- ${bosco.getName(v.jid)}\n${v.jid}\n[${v.read_only ? 'Left' : 'Joined'}]`).join`\n\n`
+  const txs = pathumma.chats.all().filter(v => v.jid.endsWith('g.us')).map(v =>`- ${pathumma.getName(v.jid)}\n${v.jid}\n[${v.read_only ? 'Left' : 'Joined'}]`).join`\n\n`
   reply(txs)
   break
      
@@ -3210,43 +3210,43 @@ oi2 = teks.split('|')[1]
 if (Number(oi2) >= 50) return reply('*Most!*')
 if (!Number(oi2)) return reply('*The number must be a number!*')
 	  for (let i = 0; i < oi2; i++) {
-	  bosco.sendMessage(from, `${oi1}`, MessageType.text)
+	  pathumma.sendMessage(from, `${oi1}`, MessageType.text)
 	  }
 } else if (!isQuotedSticker && !isQuotedAudio && !isQuotedImage && budy.length < 10) {
 teks = mek.message.extendedTextMessage.contextInfo.quotedMessage.conversation
 if (!Number(args[0])) return reply('*The number must be a number!*')
 if (Number(args[0]) >= 50) return reply('*Most!*')
 	  for (let i = 0; i < args[0]; i++) {
-	  bosco.sendMessage(from, teks, MessageType.text)
+	  pathumma.sendMessage(from, teks, MessageType.text)
 	  }
 } else if (isQuotedSticker) {
 	encmedian = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-	         median = await bosco.downloadAndSaveMediaMessage(encmedian)
+	         median = await pathumma.downloadAndSaveMediaMessage(encmedian)
 				anu = fs.readFileSync(median)
 	if (!Number(args[0])) return reply('*The number must be a number!*')
 	if (Number(args[0]) >= 50) return reply('*Most!*')
 	  for (let i = 0; i < args[0]; i++) {
-	  bosco.sendMessage(from, anu, sticker)
+	  pathumma.sendMessage(from, anu, sticker)
 	  }
 } else if (isQuotedAudio) {
 	encmediat = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-	            mediat = await bosco.downloadAndSaveMediaMessage(encmediat)
+	            mediat = await pathumma.downloadAndSaveMediaMessage(encmediat)
 				anu = fs.readFileSync(mediat)
 	if (!Number(args[0])) return reply('*The number must be a number!*')
 	if (Number(args[0]) >= 50) return reply('*Most!*')
 	  for (let i = 0; i < args[0]; i++) {
-	  bosco.sendMessage(from, anu, audio, {mimetype: 'audio/mp4', duration: 359996400, ptt:true})
+	  pathumma.sendMessage(from, anu, audio, {mimetype: 'audio/mp4', duration: 359996400, ptt:true})
 	  }
 } else if (isQuotedImage) {
 	boij = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-	delb = await bosco.downloadMediaMessage(boij)
+	delb = await pathumma.downloadMediaMessage(boij)
 	teks = body.slice(6)
 	oi1 = teks.split('|')[0]
 oi2 = teks.split('|')[1]
 if (Number(oi2) >= 50) return reply('*Most!*')
 	if (!Number(oi2)) return reply('*The number must be a number!*')
 	  for (let i = 0; i < oi2; i++) {
-	  bosco.sendMessage(from, delb, MessageType.image, {caption: oi1})
+	  pathumma.sendMessage(from, delb, MessageType.image, {caption: oi1})
 	  }
 }
 	  break
@@ -3254,7 +3254,7 @@ if (Number(oi2) >= 50) return reply('*Most!*')
                     if (!isOwner && !mek.key.fromMe) return reply(mess.only.owner)
                 reply('*Successfully delete chat*' + from)
                 await sleep(4000)
-                bosco.modifyChat(from, ChatModification.delete)
+                pathumma.modifyChat(from, ChatModification.delete)
                 break
      case 'mute':
 			    if (!isOwner && !mek.key.fromMe) return reply(mess.only.owner)
@@ -3265,9 +3265,9 @@ if (Number(oi2) >= 50) return reply('*Most!*')
                 reply('*The bot has been successfully muted in this chat*')
                 break
      case 'tts':
-					if (args.length < 1) return bosco.sendMessage(from, `Kode bahasanya mana kak? contoh : ${prefix}tts id yamate kudasai`, text, { quoted: mek })
+					if (args.length < 1) return pathumma.sendMessage(from, `Kode bahasanya mana kak? contoh : ${prefix}tts id yamate kudasai`, text, { quoted: mek })
 				   const gtts = require('./lib/gtts')(args[0])
-					if (args.length < 2) return bosco.sendMessage(from, `Teksnya mana kak? contoh : ${prefix}tts id yamate kudasai`, text, { quoted: mek })
+					if (args.length < 2) return pathumma.sendMessage(from, `Teksnya mana kak? contoh : ${prefix}tts id yamate kudasai`, text, { quoted: mek })
 					var bby = body.slice(8)
 					ranm = getRandom('.mp3')
 					rano = getRandom('.ogg')
@@ -3278,7 +3278,7 @@ if (Number(oi2) >= 50) return reply('*Most!*')
 								fs.unlinkSync(ranm)
 								buff = fs.readFileSync(rano)
 								if (err) return reply(dla.stikga())
-								bosco.sendMessage(from, buff, audio, { duration: 359996400, ptt: true, quoted: mek })
+								pathumma.sendMessage(from, buff, audio, { duration: 359996400, ptt: true, quoted: mek })
 								fs.unlinkSync(rano)
 							})
 						})
@@ -3288,7 +3288,7 @@ if (Number(oi2) >= 50) return reply('*Most!*')
 				if (!isGroupAdmins) return reply(mess.only.admin)
 				if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('*Reply To Target*')
 			demote = mek.message.extendedTextMessage.contextInfo.participant
-		    bosco.groupDemoteAdmin(from, [demote])
+		    pathumma.groupDemoteAdmin(from, [demote])
 						reply('*Successful Demote an Admin*')
 						break
 					case 'promote':
@@ -3296,27 +3296,27 @@ if (Number(oi2) >= 50) return reply('*Most!*')
 					if (!isGroupAdmins) return reply(mess.only.admin)
 				  if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('*Reply To Target*')
 			promote = mek.message.extendedTextMessage.contextInfo.participant
-		    bosco.groupMakeAdmin(from, [promote])
+		    pathumma.groupMakeAdmin(from, [promote])
 						reply('*Successful Promoted an Admin')
 						break
                 case 'linkgc':
 				if (!isGroup) return reply(mess.only.group)
-					linkgc = await bosco.groupInviteCode(from)
+					linkgc = await pathumma.groupInviteCode(from)
 					yeh = `https://chat.whatsapp.com/${linkgc}\n\nLink grup ${groupName}`
-					bosco.sendMessage(from, yeh, text, { quoted: fgc })
+					pathumma.sendMessage(from, yeh, text, { quoted: fgc })
 					break
      case 'resetlinkgroup':
          case 'revoke':
          if (!isGroup) return reply(mess.only.group)
          if (!isGroupAdmins) return reply(mess.only.admin)
           json = ['action', 'inviteReset', from]
-         bosco.query({json, expect200: true})
+         pathumma.query({json, expect200: true})
           reply('*Succes Reset Group Link*')
          break
      case 'tagme':
                   var nomqm = mek.participant
 				    tagu = `@${nomqm.split('@')[0]}`
-					bosco.sendMessage(from, tagu, text, { quoted: ftrol, contextInfo: { forwardingScore: 508, isForwarded: true, mentionedJid: [nomqm]}})
+					pathumma.sendMessage(from, tagu, text, { quoted: ftrol, contextInfo: { forwardingScore: 508, isForwarded: true, mentionedJid: [nomqm]}})
 					break
                     case 'fdeface':
                               var nn = body.slice(9)
@@ -3326,9 +3326,9 @@ if (Number(oi2) >= 50) return reply('*Most!*')
                                 imgbbb = require('imgbb-uploader')
                                 run = getRandom('.jpeg')
                                 encmediad = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-                                mediad = await bosco.downloadAndSaveMediaMessage(encmediad)
+                                mediad = await pathumma.downloadAndSaveMediaMessage(encmediad)
                                 ddatae = await imageToBase64(JSON.stringify(mediad).replace(/\"/gi, ''))
-                                bosco.sendMessage(from, {
+                                pathumma.sendMessage(from, {
                                         text: `${urlnye}`,
                                         matchedText: `${urlnye}`,
                                         canonicalUrl: `${urlnye}`,
@@ -3344,18 +3344,18 @@ if (Number(oi2) >= 50) return reply('*Most!*')
                 var parti = gh.split("|")[0];
                 var targetq = gh.split("|")[1];
 				var bot = gh.split("|")[2];
-			    bosco.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${parti}@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { conversation: `${targetq}` }}})
+			    pathumma.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${parti}@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { conversation: `${targetq}` }}})
 					break
                 case 'return':
 				if (!isOwner) return 
-					return bosco.sendMessage(from, JSON.stringify(eval(body.slice(8))), text, {quoted: mek})
-					if (err) return bosco.sendMessage(from, `root @Denis Ser:~ ${err}`, text, { quoted: mek })
+					return pathumma.sendMessage(from, JSON.stringify(eval(body.slice(8))), text, {quoted: mek})
+					if (err) return pathumma.sendMessage(from, `root @Denis Ser:~ ${err}`, text, { quoted: mek })
                  break
               case 'swm':
 						if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 							ppp = `${args.join(' ')}`
 							const encmediao = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-							const media = await bosco.downloadAndSaveMediaMessage(encmediao, `./sticker/${sender}`)
+							const media = await pathumma.downloadAndSaveMediaMessage(encmediao, `./sticker/${sender}`)
 							const packname1 = ppp.split('|')[0]
 							const author1 = ppp.split('|')[1]
 							exif.create(packname1, author1, `stickwm_${sender}`)
@@ -3373,7 +3373,7 @@ if (Number(oi2) >= 50) return reply('*Most!*')
 										console.log('Finish')
 										exec(`webpmux -set exif ./sticker/stickwm_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
 											if (error) return reply(mess.error.api)
-											bosco.sendMessage(from, fs.readFileSync(`./sticker/${sender}.webp`), sticker, {quoted: mek})
+											pathumma.sendMessage(from, fs.readFileSync(`./sticker/${sender}.webp`), sticker, {quoted: mek})
 											fs.unlinkSync(media)	
 											fs.unlinkSync(`./sticker/${sender}.webp`)	
 											fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)
@@ -3386,7 +3386,7 @@ if (Number(oi2) >= 50) return reply('*Most!*')
 							wmsti = body.slice(11)
 							if (!wmsti.includes('|')) return reply(`Kirim gambar atau reply gambar dengan caption *${prefix}stickerwm nama|author*`)
 							const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-							const media = await bosco.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
+							const media = await pathumma.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
 							const packname1 = wmsti.split('|')[0]
 							const author1 = wmsti.split('|')[1]
 							exif.create(packname1, author1, `stickwm_${sender}`)
@@ -3406,7 +3406,7 @@ if (Number(oi2) >= 50) return reply('*Most!*')
 										console.log('Finish')
 										exec(`webpmux -set exif ./sticker/stickwm_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
 											if (error) return reply(mess.error.api)
-											bosco.sendMessage(from, fs.readFileSync(`./sticker/${sender}.webp`), sticker, {quoted: mek})
+											pathumma.sendMessage(from, fs.readFileSync(`./sticker/${sender}.webp`), sticker, {quoted: mek})
 											fs.unlinkSync(media)
 											fs.unlinkSync(`./sticker/${sender}.webp`)
 											fs.unlinkSync(`./sticker/stickwm_${sender}.exif`)
@@ -3434,7 +3434,7 @@ default:
 if (budy.startsWith('=>')){
 if (!isOwner) return
 try {
-return bosco.sendMessage(from, 
+return pathumma.sendMessage(from, 
 `${a}📥 Input: ${budy.slice(3)}
 📤 OutPut: 
 ${JSON.stringify(eval(budy.slice(2)),null,'\t')}
@@ -3450,9 +3450,9 @@ if (!isOwner) return
 const sep = budy.split("\n")
 let exc = budy.replace(sep[0]+"\n", "")
 exec(exc, (err, stdout) => {
-if (err) return bosco.sendMessage(from, `root @denis:~ ${err}`, text, { quoted: mek })
+if (err) return pathumma.sendMessage(from, `root @denis:~ ${err}`, text, { quoted: mek })
 if (stdout) {
-bosco.sendMessage(from, stdout, text)
+pathumma.sendMessage(from, stdout, text)
 }
 })
 }
@@ -3483,6 +3483,5 @@ console.log('[',color('TEXT','teal'),']',`Message : ${budy} From`, color(pushnam
         }
 	}
 }
-
 
 
