@@ -70,7 +70,7 @@ pkg install bash
 git clone https://github.com/Vk-ser/pathumma-v2.git 
 ```
 ```
-cd pathumma
+cd pathumma-v2
 ```
 ```
 bash install.sh
